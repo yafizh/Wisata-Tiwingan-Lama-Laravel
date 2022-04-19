@@ -11,10 +11,10 @@
                     <a class="nav-link" href="/">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/images">Galeri Gambar</a>
+                    <a class="nav-link {{ Request::is('images') ? 'active' : '' }}" href="/images">Galeri Gambar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/videos">Galeri Video</a>
+                    <a class="nav-link {{ Request::is('videos') ? 'active' : '' }}" href="/videos">Galeri Video</a>
                 </li>
             </ul>
         </div>
