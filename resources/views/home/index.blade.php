@@ -25,7 +25,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-12">
-                    <img src="/images/village.jpg" class="img-thumbnail" alt="Profil Desa Tiwingan Lama" />
+                    <img src="/assets/images/village.jpg" class="img-thumbnail" alt="Profil Desa Tiwingan Lama" />
                 </div>
                 <div class="col-lg-8 col-md-12 p-3 fs-5">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae velit nobis magni eius ipsum illum
@@ -59,7 +59,7 @@
             <div class="row fs-5 justify-content-center">
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/bukit_tiwingan.webp" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/bukit_tiwingan.webp" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Bukit Tiwingan</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/alimpung_park.webp" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/alimpung_park.webp" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Alimpung Park</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/matang_kaladan.webp" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/matang_kaladan.webp" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Matang Kaladan</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/pancing_jungur.webp" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/pancing_jungur.webp" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Pancing Jungur</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -133,7 +133,7 @@
             <div class="row fs-5 justify-content-center">
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/ojek.jpeg" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/ojek.jpeg" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Ojek Sepeda Motor</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -147,7 +147,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/kapal.jpeg" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/kapal.jpeg" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Kapal</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -161,7 +161,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                     <div class="card">
-                        <img src="/images/home_stay.jpeg" class="card-img-destination card-img-top" alt="..." />
+                        <img src="/assets/images/home_stay.jpeg" class="card-img-destination card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Home Stay</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
