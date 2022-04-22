@@ -42,35 +42,57 @@
 
                 oFReader.onload = function(oFREvent) {
                     placeholder.src = oFREvent.target.result;
-                    placeholder.classList.remove('d-none');
-                    button[0].parentElement.classList.add('d-none');
-                    button[0].parentElement.style.backgroundColor = "rgba(0,0,0,.8)"
-                    button[0].classList.add('d-none');
-                    button[1].classList.remove('d-none');
-                    button[2].classList.remove('d-none');
-                    generateImgPreviewPlaceholder();
+                    if (button['isAddImage']) {
+                        placeholder.classList.remove('d-none');
+                        button['addImageButton'].parentElement.classList.add('d-none');
+                        button['addImageButton'].parentElement.style.backgroundColor = "rgba(0,0,0,.8)"
+                        button['addImageButton'].classList.add('d-none');
+                        button['upadateImageButton'].classList.remove('d-none');
+                        button['removeImageButton'].classList.remove('d-none');
+                        generateImgPreviewPlaceholder();
 
-                    document.querySelectorAll(".preview-image-container").forEach((box) => {
-                        box.onmouseover = () => {
-                            if (box.children[0].src != "") box.children[1].classList.remove('d-none');
-                        }
-                        box.onmouseout = () => {
-                            if (box.children[0].src != "") box.children[1].classList.add('d-none');
-                        }
-                    });
+                        document.querySelectorAll(".preview-image-container").forEach((box) => {
+                            box.onmouseover = () => {
+                                if (box.children[0].src != "") box.children[1].classList.remove('d-none');
+                            }
+                            box.onmouseout = () => {
+                                if (box.children[0].src != "") box.children[1].classList.add('d-none');
+                            }
+                        });
+                    }
                 }
             }
             const addImage = (button) => {
-                button.parentElement.nextElementSibling.onchange = _ => previewImg(button.parentElement.nextElementSibling,
-                    button.parentElement.previousElementSibling, [button,
-                        button.nextElementSibling, button
-                        .nextElementSibling.nextElementSibling
-                    ]);
-                button.parentElement.nextElementSibling.click();
+                const addImageButton = button;
+                const upadateImageButton = button.nextElementSibling;
+                const removeImageButton = button.nextElementSibling.nextElementSibling;
+                const inputImage = button.parentElement.nextElementSibling;
+                const imgPreviewPlaceholder = button.parentElement.previousElementSibling;
+                inputImage.onchange = _ => previewImg(
+                    inputImage,
+                    imgPreviewPlaceholder, {
+                        "addImageButton": addImageButton,
+                        "upadateImageButton": upadateImageButton,
+                        "removeImageButton": removeImageButton,
+                        "isAddImage": true
+                    }
+                );
+                inputImage.click();
             }
-            const removeImage = (button) => {
-                button.parentElement.parentElement.remove();
+            const updateImage = (button) => {
+                const upadateImageButton = button;
+                const inputImage = button.parentElement.nextElementSibling;
+                const imgPreviewPlaceholder = button.parentElement.previousElementSibling;
+                inputImage.onchange = _ => previewImg(
+                    inputImage,
+                    imgPreviewPlaceholder, {
+                        "upadateImageButton": upadateImageButton,
+                        "isAddImage": false
+                    }
+                );
+                inputImage.click();
             }
+            const removeImage = (button) => button.parentElement.parentElement.remove();
             generateImgPreviewPlaceholder();
         </script>
     </main>
