@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\ImageGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardImageController extends Controller
 {
@@ -15,7 +18,7 @@ class DashboardImageController extends Controller
     public function index()
     {
         return view('dashboard.images.index', [
-            "images" => Image::all()
+            "images" => ImageGallery::all()
         ]);
     }
 
@@ -37,7 +40,37 @@ class DashboardImageController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->file('images'));
+        $validatedForm = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'images.*' => 'file|image|required'
+        ]);
+
+        // Generate Unique Identifier and check it in database
+        $duplicate = 0;
+        do {
+            $duplicate++;
+            $slug = Str::slug((($duplicate > 1) ? ($validatedForm['title'] . '-' . $duplicate) : $validatedForm['title']), '-');
+            $validator = Validator::make(["slug" => $slug], [
+                "slug" => "unique:image_galleries"
+            ]);
+        } while ($validator->fails());
+
+        $uploadedDataImages = [];
+        if ($request->file('images')) {
+            foreach ($request->file('images') as $image) {
+                $uploadedDataImages[] = $image->store('post-images');
+            }
+        }
+
+        $properDataImageGallery = array_merge($validator->validated(), $validatedForm);
+        $id = (ImageGallery::create($properDataImageGallery))->id;
+
+        foreach ($uploadedDataImages as $image) {
+            Image::create(['image_gallery_id' => $id, 'image' => $image]);
+        }
+
+        return redirect('/admin/images')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

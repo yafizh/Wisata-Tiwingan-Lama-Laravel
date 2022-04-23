@@ -11,12 +11,19 @@
             <div class="mb-3">
                 <label for="formFile" class="form-label">Gambar</label>
                 <div id="image-container" class="d-flex gap-3 overflow-auto">
+                    @error('images')
+                        {{ $message }}
+                    @enderror
                     {{-- Class border-2 dan border-3 memakan space, sehinggal gambra tidak fit to div atau memenuhi div seluruhnya, ada space kosong berwarna putih --}}
                 </div>
             </div>
             <div class="mb-3 col-lg-6">
-                <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
-                <input id="body" type="hidden" name="body">
+                <label for="title" class="form-label">Judul</label>
+                <input type="text" class="form-control" name="title" id="title" required>
+            </div>
+            <div class="mb-3 col-lg-6">
+                <label for="body" class="form-label">Keterangan</label>
+                <input id="body" type="hidden" name="body" required>
                 <trix-editor input="body"></trix-editor>
             </div>
             <div class="mb-3">
