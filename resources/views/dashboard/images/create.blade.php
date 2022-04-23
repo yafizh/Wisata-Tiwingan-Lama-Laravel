@@ -6,7 +6,8 @@
             <h1 class="h2">Tambah Galeri Gambar</h1>
         </div>
 
-        <form action="">
+        <form action="/admin/images" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
                 <label for="formFile" class="form-label">Gambar</label>
                 <div id="image-container" class="d-flex gap-3 overflow-auto">
@@ -35,7 +36,7 @@
                 </div>
             `;
             const imgPreviewContainer = document.querySelector("#image-container");
-            const generateImgPreviewPlaceholder = () => imgPreviewContainer.innerHTML += templateImgPreviewPlaceholder;
+            const generateImgPreviewPlaceholder = () => imgPreviewContainer.insertAdjacentHTML('beforeend', templateImgPreviewPlaceholder);
             const previewImg = (input, placeholder, button) => {
                 const oFReader = new FileReader();
                 oFReader.readAsDataURL(input.files[0]);
