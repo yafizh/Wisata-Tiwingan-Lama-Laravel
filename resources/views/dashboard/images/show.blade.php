@@ -6,7 +6,7 @@
             <h1 class="h2">{{ $imageGallery->title }}</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <a href="/admin/gallery/images" class="btn btn-sm btn-secondary ms-2">Kembali</a>
-                <a href="/admin/gallery/images/update" class="btn btn-sm btn-warning ms-2">Ubah</a>
+                <a href="/admin/gallery/images/{{ $imageGallery->slug }}/edit" class="btn btn-sm btn-warning ms-2">Ubah</a>
                 <form action="/admin/gallery/images/{{ $imageGallery->slug }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf

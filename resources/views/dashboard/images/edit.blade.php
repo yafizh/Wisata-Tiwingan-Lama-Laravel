@@ -10,11 +10,11 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="formFile" class="form-label">Gambar</label>
+                <label class="form-label">Gambar</label>
                 <div id="image-container" class="d-flex gap-3 overflow-auto">
                     @foreach ($imageGallery->images as $image)
                         <div class="rounded border border-1 overflow-hidden preview-image-container">
-                            <img src="{{ asset('storage/' . $image->image) }}" style="pointer-events: none;">
+                            <img src="{{ asset('storage/' . $image->image) }}">
                             <div class="button-container d-flex flex-column gap-2 justify-content-center align-items-center d-none"
                                 style="background-color: rgba(0, 0, 0, .8)">
                                 <button type="button" class="btn btn-warning" onclick="updateImage(this)">Ganti
@@ -23,7 +23,7 @@
                                     Gambar...</button>
                             </div>
                             <input type="file" name="images[]" hidden>
-                            <input type="text" value="{{ $image->image }}" name="image_position[]" hidden>
+                            <input type="text" value="{{ $image->image }}" name="image_in_storage[]" hidden>
                         </div>
                     @endforeach
                 </div>
@@ -54,12 +54,12 @@
             </div>
         </form>
         <script>
-            document.querySelectorAll(".preview-image-container").forEach((box) => {
-                box.onmouseover = () => {
-                    box.children[1].classList.remove('d-none');
+            document.querySelectorAll(".preview-image-container").forEach((container) => {
+                container.onmouseover = () => {
+                    container.children[1].classList.remove('d-none');
                 }
-                box.onmouseout = () => {
-                    box.children[1].classList.add('d-none');
+                container.onmouseout = () => {
+                    container.children[1].classList.add('d-none');
                 }
             });
             const templateImgPreviewPlaceholder = `
@@ -85,23 +85,22 @@
                     if (button['isAddImage']) {
                         placeholder.classList.remove('d-none');
                         button['addImageButton'].parentElement.classList.add('d-none');
-                        button['addImageButton'].parentElement.style.backgroundColor = "rgba(0,0,0,.8)"
+                        button['addImageButton'].parentElement.style.backgroundColor = "rgba(0,0,0,.8)";
                         button['addImageButton'].classList.add('d-none');
                         button['upadateImageButton'].classList.remove('d-none');
                         button['removeImageButton'].classList.remove('d-none');
                         generateImgPreviewPlaceholder();
 
-                        document.querySelectorAll(".preview-image-container").forEach((box) => {
-                            box.onmouseover = () => {
-                                if (box.children[0].src != "") box.children[1].classList.remove('d-none');
+                        document.querySelectorAll(".preview-image-container").forEach((container) => {
+                            container.onmouseover = () => {
+                                if (container.children[0].src != "") container.children[1].classList.remove('d-none');
                             }
-                            box.onmouseout = () => {
-                                if (box.children[0].src != "") box.children[1].classList.add('d-none');
+                            container.onmouseout = () => {
+                                if (container.children[0].src != "") container.children[1].classList.add('d-none');
                             }
                         });
-                    } else {
+                    } else
                         button['upadateImageButton'].parentElement.nextElementSibling.nextElementSibling.remove();
-                    }
                 }
             }
             const addImage = (button) => {

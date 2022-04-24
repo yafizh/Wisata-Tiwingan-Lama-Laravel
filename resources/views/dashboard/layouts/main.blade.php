@@ -18,13 +18,12 @@
         trix-toolbar [data-trix-button-group="file-tools"] {
             display: none;
         }
-
     </style>
 
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
-    <link href="/css/dashboard_images.css" rel="stylesheet">
+    <link href="/css/dashboard-gallery-images.css" rel="stylesheet">
 </head>
 
 <body>

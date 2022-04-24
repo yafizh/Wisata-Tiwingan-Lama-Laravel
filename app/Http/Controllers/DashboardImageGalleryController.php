@@ -47,6 +47,7 @@ class DashboardImageGalleryController extends Controller
             'images.*' => 'image|max:20000'
         ]);
 
+        // Creating slug
         $duplicate = 0;
         do {
             $duplicate++;
@@ -56,19 +57,18 @@ class DashboardImageGalleryController extends Controller
             ]);
         } while ($validator->fails());
 
-        $uploadedDataImages = [];
-        if ($request->file('images')) {
-            foreach ($request->file('images') as $image) {
-                $uploadedDataImages[] = $image->store('post-images');
-            }
-        }
+        $uploadedImages = [];
+        if ($request->file('images'))
+            foreach ($request->file('images') as $image)
+                $uploadedImages[] = $image->store('post-images');
+
 
         $properDataImageGallery = array_merge($validator->validated(), $validatedForm);
         $id = (ImageGallery::create($properDataImageGallery))->id;
 
-        foreach ($uploadedDataImages as $image) {
+        foreach ($uploadedImages as $image)
             Image::create(['image_gallery_id' => $id, 'image' => $image]);
-        }
+
 
         return redirect('/admin/gallery/images')->with('success', 'Data berhasil ditambahkan');
     }
@@ -114,13 +114,14 @@ class DashboardImageGalleryController extends Controller
             'images.*' => 'image|max:20000'
         ]);
 
-        if ($validator->fails()) {
-            return redirect('/admin/gallery/images/'.$imageGallery->slug.'/edit')
+        if ($validator->fails())
+            return redirect('/admin/gallery/images/' . $imageGallery->slug . '/edit')
                 ->withErrors($validator)
                 ->withInput();
-        }
+
         $validatedForm = $validator->safe()->except(['images']);
 
+        // Creating slug and checking with old slug
         $duplicate = 0;
         do {
             $duplicate++;
@@ -131,26 +132,28 @@ class DashboardImageGalleryController extends Controller
             ]);
         } while ($validator->fails());
 
-        $uploadedDataImages = $request->post('image_position');
-        if ($request->file('images')) {
-            foreach ($request->file('images') as $image) {
-                $uploadedDataImages[] = $image->store('post-images');
-            }
-        }
+        $uploadedImages = $request->post('image_in_storage');
+        if ($request->file('images'))
+            foreach ($request->file('images') as $image)
+                $uploadedImages[] = $image->store('post-images');
+
+
 
         $properDataImageGallery = array_merge($validator->validated(), $validatedForm);
         ImageGallery::where('id', $imageGallery->id)
             ->update($properDataImageGallery);
 
-
-        foreach (ImageGallery::find($imageGallery->id)->images as $image) {
-            if (!in_array($image->image, $uploadedDataImages))
+        // Re-upload images algoritm
+        // 1. Delete images which have image_gallery_id is $imageGallery->id in storage
+        // 2. Delete images which have image_gallery_id is $imageGallery->id in database
+        // 3. Insert images to database
+        foreach (ImageGallery::find($imageGallery->id)->images as $image)
+            if (!in_array($image->image, $uploadedImages))
                 Storage::delete($image->image);
-        }
         Image::where('image_gallery_id', $imageGallery->id)->delete();
-        foreach ($uploadedDataImages as $image) {
+        foreach ($uploadedImages as $image)
             Image::create(['image_gallery_id' => $imageGallery->id, 'image' => $image]);
-        }
+
 
         return redirect('/admin/gallery/images')->with('success', 'Data berhasil ditambahkan');
     }
@@ -163,9 +166,9 @@ class DashboardImageGalleryController extends Controller
      */
     public function destroy(ImageGallery $imageGallery)
     {
-        foreach ($imageGallery->images as $image) {
+        foreach ($imageGallery->images as $image)
             Storage::delete($image->image);
-        }
+
         ImageGallery::destroy($imageGallery->id);
         return redirect('/admin/gallery/images')->with('success', 'Image berhasil dihapus!');
     }

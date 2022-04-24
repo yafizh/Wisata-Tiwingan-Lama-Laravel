@@ -2,7 +2,7 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link" aria-current="page" href="#">
                     <span data-feather="home"></span>
                     Dashboard
                 </a>
@@ -47,13 +47,13 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="/admin/gallery/images">
+                <a class="nav-link {{ Request::is('admin/gallery/images*') ? 'active' : '' }}" href="/admin/gallery/images">
                     <span data-feather="file-text"></span>
                     Gambar
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/gallery/videos">
+                <a class="nav-link {{ Request::is('admin/gallery/videos*') ? 'active' : '' }}" href="/admin/gallery/videos">
                     <span data-feather="file-text"></span>
                     Video
                 </a>

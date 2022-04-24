@@ -9,7 +9,7 @@
         <form action="/admin/gallery/images" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="formFile" class="form-label">Gambar</label>
+                <label class="form-label">Gambar</label>
                 <div id="image-container" class="d-flex gap-3 overflow-auto">
                 </div>
                 @error('images.*')
@@ -68,12 +68,12 @@
                         button['removeImageButton'].classList.remove('d-none');
                         generateImgPreviewPlaceholder();
 
-                        document.querySelectorAll(".preview-image-container").forEach((box) => {
-                            box.onmouseover = () => {
-                                if (box.children[0].src != "") box.children[1].classList.remove('d-none');
+                        document.querySelectorAll(".preview-image-container").forEach((container) => {
+                            container.onmouseover = () => {
+                                if (container.children[0].src != "") container.children[1].classList.remove('d-none');
                             }
-                            box.onmouseout = () => {
-                                if (box.children[0].src != "") box.children[1].classList.add('d-none');
+                            container.onmouseout = () => {
+                                if (container.children[0].src != "") container.children[1].classList.add('d-none');
                             }
                         });
                     }
@@ -97,13 +97,11 @@
                 inputImage.click();
             }
             const updateImage = (button) => {
-                const upadateImageButton = button;
                 const inputImage = button.parentElement.nextElementSibling;
                 const imgPreviewPlaceholder = button.parentElement.previousElementSibling;
                 inputImage.onchange = _ => previewImg(
                     inputImage,
                     imgPreviewPlaceholder, {
-                        "upadateImageButton": upadateImageButton,
                         "isAddImage": false
                     }
                 );
