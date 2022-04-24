@@ -47,13 +47,13 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="/admin/images">
+                <a class="nav-link" href="/admin/gallery/images">
                     <span data-feather="file-text"></span>
                     Gambar
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/videos">
+                <a class="nav-link" href="/admin/gallery/videos">
                     <span data-feather="file-text"></span>
                     Video
                 </a>

@@ -10,7 +10,7 @@
                     This week
                 </button>
                 <div class="btn-group ms-2">
-                    <a href="/admin/images/create" class="btn btn-sm btn-primary">Tambah</a>
+                    <a href="/admin/gallery/images/create" class="btn btn-sm btn-primary">Tambah</a>
                 </div>
             </div>
         </div>
@@ -42,13 +42,13 @@
                             <td class="fit">{{ $loop->iteration }}</td>
                             <td>{{ $image->title }}</td>
                             <td class="fit">
-                                <a href="/dashboard/images/{{ $image->slug }}" class="badge bg-info"><span
+                                <a href="/admin/gallery/images/{{ $image->slug }}" class="badge bg-info"><span
                                         data-feather="eye"></span></a>
 
-                                <a href="/dashboard/images/{{ $image->slug }}/edit" class="badge bg-warning"><span
+                                <a href="/admin/gallery/images/{{ $image->slug }}/edit" class="badge bg-warning"><span
                                         data-feather="edit"></span></a>
 
-                                <form action="/dashboard/images/{{ $image->slug }}" method="post" class="d-inline">
+                                <form action="/admin/gallery/images/{{ $image->slug }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span

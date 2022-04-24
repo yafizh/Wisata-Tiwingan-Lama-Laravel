@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardImageController;
+use App\Http\Controllers\DashboardImageGalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\VideoController;
@@ -23,4 +23,6 @@ Route::get('/images', [ImageController::class, 'index']);
 Route::get('/videos', [VideoController::class, 'index']);
 Route::get('/admin', [DashboardController::class, 'index']);
 
-Route::resource('/admin/images', DashboardImageController::class);
+Route::resource('/admin/gallery/images', DashboardImageGalleryController::class)->parameters([
+    'images' => 'imageGallery:slug'
+]);

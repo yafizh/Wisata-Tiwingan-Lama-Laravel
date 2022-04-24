@@ -3,14 +3,29 @@
 @section('content')
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Tambah Galeri Gambar</h1>
+            <h1 class="h2">Edit Galeri Gambar</h1>
         </div>
 
-        <form action="/admin/gallery/images" method="post" enctype="multipart/form-data">
+        <form action="/admin/gallery/images/{{ $imageGallery->slug }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label for="formFile" class="form-label">Gambar</label>
                 <div id="image-container" class="d-flex gap-3 overflow-auto">
+                    @foreach ($imageGallery->images as $image)
+                        <div class="rounded border border-1 overflow-hidden preview-image-container">
+                            <img src="{{ asset('storage/' . $image->image) }}" style="pointer-events: none;">
+                            <div class="button-container d-flex flex-column gap-2 justify-content-center align-items-center d-none"
+                                style="background-color: rgba(0, 0, 0, .8)">
+                                <button type="button" class="btn btn-warning" onclick="updateImage(this)">Ganti
+                                    Gambar...</button>
+                                <button type="button" class="btn btn-danger" onclick="removeImage(this)">Hapus
+                                    Gambar...</button>
+                            </div>
+                            <input type="file" name="images[]" hidden>
+                            <input type="text" value="{{ $image->image }}" name="image_position[]" hidden>
+                        </div>
+                    @endforeach
                 </div>
                 @error('images.*')
                     <p class="text-danger">{{ $message }}</p>
@@ -19,7 +34,7 @@
             <div class="mb-3 col-lg-6">
                 <label for="title" class="form-label">Judul</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                    value="{{ old('title') }}" required>
+                    value="{{ old('title', $imageGallery->title) }}" required>
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -31,7 +46,7 @@
                 @error('body')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-                <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+                <input id="body" type="hidden" name="body" value="{{ old('body', $imageGallery->body) }}">
                 <trix-editor input="body"></trix-editor>
             </div>
             <div class="mb-3">
@@ -39,6 +54,14 @@
             </div>
         </form>
         <script>
+            document.querySelectorAll(".preview-image-container").forEach((box) => {
+                box.onmouseover = () => {
+                    box.children[1].classList.remove('d-none');
+                }
+                box.onmouseout = () => {
+                    box.children[1].classList.add('d-none');
+                }
+            });
             const templateImgPreviewPlaceholder = `
                 <div class="rounded border border-1 overflow-hidden preview-image-container">
                     <img class='d-none'>
@@ -76,6 +99,8 @@
                                 if (box.children[0].src != "") box.children[1].classList.add('d-none');
                             }
                         });
+                    } else {
+                        button['upadateImageButton'].parentElement.nextElementSibling.nextElementSibling.remove();
                     }
                 }
             }
