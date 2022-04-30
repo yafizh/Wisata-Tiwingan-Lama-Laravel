@@ -19,7 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/images', [ImageController::class, 'index']);
+Route::get('/images/show', [ImageController::class, 'show']);
+Route::get('/images/getMore', [ImageController::class, 'getMore']);
+
+
 Route::get('/videos', [VideoController::class, 'index']);
 Route::get('/admin', [DashboardController::class, 'index']);
 
