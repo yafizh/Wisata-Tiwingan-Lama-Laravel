@@ -92,6 +92,7 @@
             </div>
         </div>
     </div>
+    <script src="/scripts/templates.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
@@ -101,62 +102,27 @@
                 fetch('/images/show?slug=' + this.getAttribute('data-slug'))
                     .then(response => response.json())
                     .then(data => {
+                        const url = '{{ URL::asset('storage') }}';
                         $('#show .modal-title').text(data.imageGallery.title);
                         $('#show .modal-body .body').html(data.imageGallery.body);
+                        $('#show .modal-body .carousel-inner').append(templates
+                            .show_image_gallery_modal.carousel_inner(data.imageGallery.images, url));
                         if (data.imageGallery.images.length > 1) {
-                            $('#show .modal-body #carouselGalleryImage .carousel-indicators').append(`
-                                <button type="button" data-bs-target="#carouselGalleryImage" data-bs-slide-to="0" class="active" aria-current="true"
-                                    aria-label="Slide 1"></button>
-                            `);
-                            for (let i = 1; i < data.imageGallery.images.length; i++) {
-                                $('#show .modal-body #carouselGalleryImage .carousel-indicators').append(`
-                                <button type="button" data-bs-target="#carouselGalleryImage" data-bs-slide-to="${i}"
-                                        aria-current="true" aria-label="Slide ${i+1}"></button>
-                            `);
-                            }
-                            $('#show .modal-body #carouselGalleryImage').append(`
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselGalleryImage"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselGalleryImage"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                            `);
+                            $('#show .modal-body #carouselGalleryImage .carousel-indicators').append(
+                                templates.show_image_gallery_modal.carousel_indicators(data.imageGallery
+                                    .images.length));
+                            $('#show .modal-body #carouselGalleryImage').append(templates
+                                .show_image_gallery_modal.carousel_next_prev_button);
                         }
-
-                        const url = '{{ URL::asset('storage') }}';
-                        $('#show .modal-body .carousel-inner').append(`
-                            <div class="carousel-item active">
-                                <img src="${url}/${data.imageGallery.images[0].image}" style="height: 255px; object-fit: cover;" class="d-block w-100">
-                            </div>
-                            `);
-
-                        for (let i = 1; i < data.imageGallery.images.length; i++) {
-                            $('#show .modal-body .carousel-inner').append(`
-                            <div class="carousel-item">
-                                        <img src="${url}/${data.imageGallery.images[i].image}" style="height: 255px; object-fit: cover;" class="d-block w-100">
-                                    </div>
-                            `);
-                        }
-
                         $('#show').modal('show');
-
                     });
             }
         });
         $('#show').on('hidden.bs.modal', _ => {
             $('#show .modal-title').text('');
             $('#show .modal-body .body').text('');
-            $('#show .modal-body #carouselGalleryImage').html(`
-                <div class="carousel-indicators">
-                </div>
-                <div class="carousel-inner">
-                </div>
-            `);
+            $('#show .modal-body #carouselGalleryImage').html(templates.show_image_gallery_modal
+                .carousel_gallery_image);
             $('#show .modal-body .carousel-inner').append('');
         })
     </script>
