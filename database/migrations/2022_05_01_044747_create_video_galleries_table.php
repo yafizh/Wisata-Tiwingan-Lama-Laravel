@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('video_galleries', function (Blueprint $table) {
             $table->id();
-            $table->string("unique_identifier")->unique();
+            $table->string("title");
+            $table->string("slug")->unique();
             $table->text("body");
-            $table->text("excerpt");
-            $table->string("video");
+            $table->text("video");
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('video_galleries');
     }
 };
