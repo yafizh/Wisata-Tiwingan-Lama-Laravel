@@ -36,7 +36,7 @@
         @if ($imageGalleries->count())
             <div class="album py-5 bg-light">
                 <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                    <div id="image-galleries" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
                         @foreach ($imageGalleries as $imageGallery)
                             <div class="col">
                                 <div class="card shadow-sm">
@@ -95,35 +95,67 @@
     <script src="/scripts/templates.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
     <script>
-        document.querySelectorAll(".btn-show").forEach((button) => {
-            button.onclick = function() {
-                fetch('/images/show?slug=' + this.getAttribute('data-slug'))
-                    .then(response => response.json())
-                    .then(data => {
-                        const url = '{{ URL::asset('storage') }}';
-                        $('#show .modal-title').text(data.imageGallery.title);
-                        $('#show .modal-body .body').html(data.imageGallery.body);
-                        $('#show .modal-body .carousel-inner').append(templates
-                            .show_image_gallery_modal.carousel_inner(data.imageGallery.images, url));
-                        if (data.imageGallery.images.length > 1) {
-                            $('#show .modal-body #carouselGalleryImage .carousel-indicators').append(
-                                templates.show_image_gallery_modal.carousel_indicators(data.imageGallery
-                                    .images.length));
-                            $('#show .modal-body #carouselGalleryImage').append(templates
-                                .show_image_gallery_modal.carousel_next_prev_button);
-                        }
-                        $('#show').modal('show');
-                    });
-            }
-        });
+        const url = '{{ URL::asset('storage') }}';
+
+        // Insert data to modal if click button view
+        const get_detail = _ => {
+            document.querySelectorAll(".btn-show").forEach((button) => {
+                button.onclick = function() {
+                    fetch('/images/show?slug=' + this.getAttribute('data-slug'))
+                        .then(response => response.json())
+                        .then(data => {
+                            $('#show .modal-title').text(data.imageGallery.title);
+                            $('#show .modal-body .body').html(data.imageGallery.body);
+                            $('#show .modal-body .carousel-inner').append(templates
+                                .show_image_gallery_modal.carousel_inner(data.imageGallery.images,
+                                    url));
+                            if (data.imageGallery.images.length > 1) {
+                                $('#show .modal-body #carouselGalleryImage .carousel-indicators')
+                                    .append(
+                                        templates.show_image_gallery_modal.carousel_indicators(data
+                                            .imageGallery
+                                            .images.length));
+                                $('#show .modal-body #carouselGalleryImage').append(templates
+                                    .show_image_gallery_modal.carousel_next_prev_button);
+                            }
+                            $('#show').modal('show');
+                        });
+                }
+            });
+        }
+
+        // Reset Modal
         $('#show').on('hidden.bs.modal', _ => {
             $('#show .modal-title').text('');
             $('#show .modal-body .body').text('');
             $('#show .modal-body #carouselGalleryImage').html(templates.show_image_gallery_modal
                 .carousel_gallery_image);
-            $('#show .modal-body .carousel-inner').append('');
-        })
+        });
+
+
+        const image_gallery_container = document.querySelector('#image-galleries');
+        $(window).scroll(function() {
+            if (
+                Math.round($(window).scrollTop()) >
+                $(document).height() - $(window).height() - 200 &&
+                image_gallery_container.children.length !=
+                parseInt('{{ $count }}')
+                ) {
+                    fetch('/images/getMore?paginate=' + image_gallery_container.children.length * 2)
+                    .then(response => response.json())
+                    .then(data => {
+                        for (let i = image_gallery_container.children.length; i < data
+                            .imageGallery.length; i++) {
+                            image_gallery_container.insertAdjacentHTML('beforeend', templates.image_gallery(data
+                                .imageGallery[i],
+                                url));
+                        }
+                        get_detail();
+                    });
+            }
+        });
+
+        get_detail();
     </script>
 @endsection

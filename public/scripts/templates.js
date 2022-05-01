@@ -37,4 +37,26 @@ const templates = {
             return buffer;
         },
     },
+    image_gallery: function (imageGallery, uri) {
+        return `
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="${uri}/${imageGallery.images[0].image}">
+                    <div class="card-body" style="height: 100px;">
+                        <div class="card-text fs-5">${imageGallery.title}</div>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col">
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show" data-slug="${imageGallery.slug}">Lihat</button>
+                        </div>
+                        <div class="col-auto pt-1">
+                            <small class="text-muted ms-auto">
+                                ${imageGallery.created_at}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
 };

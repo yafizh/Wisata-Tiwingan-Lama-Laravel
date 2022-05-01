@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Image;
 use App\Models\ImageGallery;
+use Database\Factories\ImageGalleriesFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -60,5 +61,12 @@ class DatabaseSeeder extends Seeder
             'image_gallery_id' => 4,
             'image' => 'post-images/4.webp'
         ]);
+
+        Image::create([
+            'image_gallery_id' => 4,
+            'image' => 'post-images/4.webp'
+        ]);
+
+        // ImageGallery::factory(50)->create();
     }
 }
