@@ -131,12 +131,13 @@ class DashboardVideoGalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\VideoGallery  $videoGallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(VideoGallery $videoGallery)
     {
-        //
+        VideoGallery::destroy($videoGallery->id);
+        return redirect('/admin/gallery/videos')->with('success', 'Video berhasil dihapus!');
     }
 
     public function youtube_parser($url)
