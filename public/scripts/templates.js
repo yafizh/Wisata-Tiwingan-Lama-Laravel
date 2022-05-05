@@ -59,4 +59,29 @@ const templates = {
             </div>
         `;
     },
+    video_gallery: function (videoGallery) {
+        return `
+            <div class="col">
+                <div class="card shadow-sm">
+                    <iframe loading="lazy" width="100%" height="255"
+                        src="https://www.youtube.com/embed/${videoGallery.video}" title="YouTube video"
+                        allowfullscreen>
+                    </iframe>
+                    <div class="card-body" style="height: 100px;">
+                        <div class="card-text fs-5">${videoGallery.title}</div>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col">
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show" data-slug="${videoGallery.slug}">Lihat</button>
+                        </div>
+                        <div class="col-auto pt-1">
+                            <small class="text-muted ms-auto">
+                                ${videoGallery.created_at}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
 };

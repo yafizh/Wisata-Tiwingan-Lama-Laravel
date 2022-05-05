@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardImageGalleryController;
 use App\Http\Controllers\DashboardVideoGalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,11 @@ Route::get('/images', [ImageController::class, 'index']);
 Route::get('/images/show', [ImageController::class, 'show']);
 Route::get('/images/getMore', [ImageController::class, 'getMore']);
 
+Route::get('/videos', [VideoController::class, 'index']);
+Route::get('/videos/show', [VideoController::class, 'show']);
+Route::get('/videos/getMore', [VideoController::class, 'getMore']);
 
-// Route::get('/videos', [VideoController::class, 'index']);
+
 Route::get('/admin', [DashboardController::class, 'index']);
 
 Route::resource('/admin/gallery/images', DashboardImageGalleryController::class)->parameters([
