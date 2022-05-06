@@ -9,32 +9,26 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="file"></span>
-                    Orders
+                    <span data-feather="home"></span>
+                    Profile Desa
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart"></span>
-                    Products
+                    <span data-feather="map-pin"></span>
+                    Wisata
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
-                    Customers
+                    <span data-feather="package"></span>
+                    Paket Wisata
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2"></span>
-                    Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="layers"></span>
-                    Integrations
+                    <span data-feather="globe"></span>
+                    Kontak
                 </a>
             </li>
         </ul>
@@ -48,14 +42,29 @@
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/gallery/images*') ? 'active' : '' }}" href="/admin/gallery/images">
-                    <span data-feather="file-text"></span>
+                    <span data-feather="image"></span>
                     Gambar
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/gallery/videos*') ? 'active' : '' }}" href="/admin/gallery/videos">
-                    <span data-feather="file-text"></span>
+                    <span data-feather="film"></span>
                     Video
+                </a>
+            </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Akun</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+                <span data-feather="plus-circle"></span>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('') ? 'active' : '' }}" href="/admin/gallery/images">
+                    <span data-feather="shield"></span>
+                    Ganti Password
                 </a>
             </li>
         </ul>
