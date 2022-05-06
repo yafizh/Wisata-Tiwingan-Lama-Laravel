@@ -6,10 +6,9 @@
         <div class="row">
             <h1 class="display-4 fw-bold">Desa Wisata Tiwingan Lama</h1>
             <p class="lead fw-light">
-                <span class="destination">Bukit Tiwingan</span>
-                <span class="destination">Alimpung Park</span>
-                <span class="destination">Matang Kaladan</span>
-                <span class="destination">Pancing Jungur</span>
+                @foreach ($destinations as $destination)
+                    <span class="destination">{{ $destination->name }}</span>
+                @endforeach
             </p>
         </div>
     </section>
@@ -57,65 +56,46 @@
                 </div>
             </div>
             <div class="row fs-5 justify-content-center">
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/bukit_tiwingan.webp" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Bukit Tiwingan</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination1">Lihat Selengkapnya...</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/alimpung_park.webp" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Alimpung Park</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination2">Lihat Selengkapnya...</button>
+                @foreach ($destinations as $destination)
+                    <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $destination->destination_images[0]->image) }}"
+                                class="card-img-destination card-img-top" />
+                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                                <h5 class="card-title">{{ $destination->name }}</h5>
+                                <p class="card-text">{{ strip_tags($destination->body) }}</p>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-primary btn-show" data-slug="{{ $destination->slug }}">Lihat
+                                    Selengkapnya...</button>
+                            </div>
                         </div>
                     </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    {{-- Show Modal --}}
+    <div class="modal fade" id="show" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/matang_kaladan.webp" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Matang Kaladan</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
+                <div class="modal-body p-0">
+                    <div id="carouselGalleryImage" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
                         </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination3">Lihat Selengkapnya...</button>
+                        <div class="carousel-inner">
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/pancing_jungur.webp" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Pancing Jungur</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination3">Lihat Selengkapnya...</button>
-                        </div>
+                    <div class="p-3 text-start body">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- End Destination -->
 
     <div class="container">
@@ -177,6 +157,10 @@
         </div>
     </section>
     <!-- End Destination -->
+
+    <script src="/scripts/templates.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script>
         // Navbar When Scrolling
         document.addEventListener('scroll', function() {
@@ -192,5 +176,46 @@
                 navbar.classList.add('navbar-dark');
             }
         });
+
+
+        const url = '{{ URL::asset('storage') }}';
+
+        // Insert data to modal if click button view
+        const get_detail = _ => {
+            document.querySelectorAll(".btn-show").forEach((button) => {
+                button.onclick = function() {
+                    fetch('/destination?slug=' + this.getAttribute('data-slug'))
+                        .then(response => response.json())
+                        .then(data => {
+                            $('#show .modal-title').text(data.destination.name);
+                            $('#show .modal-body .body').html(data.destination.body);
+                            $('#show .modal-body .carousel-inner').append(templates
+                                .show_image_gallery_modal.carousel_inner(data.destination.destination_images,
+                                    url));
+                            if (data.destination.destination_images.length > 1) {
+                                $('#show .modal-body #carouselGalleryImage .carousel-indicators')
+                                    .append(
+                                        templates.show_image_gallery_modal.carousel_indicators(data
+                                            .destination
+                                            .destination_images.length));
+                                $('#show .modal-body #carouselGalleryImage').append(templates
+                                    .show_image_gallery_modal.carousel_next_prev_button);
+                            }
+                            $('#show').modal('show');
+                        })
+                        .catch(error => console.log(error));
+                }
+            });
+        }
+
+        // Reset Modal
+        $('#show').on('hidden.bs.modal', _ => {
+            $('#show .modal-title').text('');
+            $('#show .modal-body .body').text('');
+            $('#show .modal-body #carouselGalleryImage').html(templates.show_image_gallery_modal
+                .carousel_gallery_image);
+        });
+
+        get_detail();
     </script>
 @endsection

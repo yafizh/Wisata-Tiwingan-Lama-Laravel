@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardDestinationController;
 use App\Http\Controllers\DashboardImageGalleryController;
 use App\Http\Controllers\DashboardVideoGalleryController;
 use App\Http\Controllers\HomeController;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/destination', [HomeController::class, 'destination']);
 
 Route::get('/images', [ImageController::class, 'index']);
 Route::get('/images/show', [ImageController::class, 'show']);
@@ -30,6 +32,7 @@ Route::get('/videos/show', [VideoController::class, 'show']);
 Route::get('/videos/getMore', [VideoController::class, 'getMore']);
 
 
+
 Route::get('/admin', [DashboardController::class, 'index']);
 
 Route::resource('/admin/gallery/images', DashboardImageGalleryController::class)->parameters([
@@ -38,4 +41,8 @@ Route::resource('/admin/gallery/images', DashboardImageGalleryController::class)
 
 Route::resource('/admin/gallery/videos', DashboardVideoGalleryController::class)->parameters([
     'videos' => 'videoGallery:slug'
+]);
+
+Route::resource('/admin/destinations', DashboardDestinationController::class)->parameters([
+    'destinations' => 'destination:slug'
 ]);

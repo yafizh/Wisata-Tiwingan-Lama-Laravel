@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Request::is('admin/destinationis*') ? 'active' : '' }}" href="/admin/destinations">
                     <span data-feather="map-pin"></span>
                     Wisata
                 </a>
