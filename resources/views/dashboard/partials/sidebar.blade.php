@@ -14,13 +14,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/destinationis*') ? 'active' : '' }}" href="/admin/destinations">
+                <a class="nav-link {{ Request::is('admin/destinations*') ? 'active' : '' }}" href="/admin/destinations">
                     <span data-feather="map-pin"></span>
                     Wisata
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Request::is('admin/tour-packages*') ? 'active' : '' }}" href="/admin/tour-packages">
                     <span data-feather="package"></span>
                     Paket Wisata
                 </a>
