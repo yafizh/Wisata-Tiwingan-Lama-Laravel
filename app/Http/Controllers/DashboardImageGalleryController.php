@@ -123,10 +123,14 @@ class DashboardImageGalleryController extends Controller
 
         // Creating slug and checking with old slug
         $duplicate = 0;
+        $properSlug = '';
         do {
             $duplicate++;
             $slug = Str::slug((($duplicate > 1) ? ($validatedForm['title'] . '-' . $duplicate) : $validatedForm['title']), '-');
-            if ($slug == $imageGallery->$slug) break;
+            if ($slug == $imageGallery->slug) {
+                $properSlug = ['slug' => $imageGallery->slug];
+                break;
+            } else $properSlug = $validator->validated();
             $validator = Validator::make(["slug" => $slug], [
                 "slug" => "unique:image_galleries"
             ]);
@@ -139,7 +143,7 @@ class DashboardImageGalleryController extends Controller
 
 
 
-        $properDataImageGallery = array_merge($validator->validated(), $validatedForm);
+        $properDataImageGallery = array_merge($properSlug, $validatedForm);
         ImageGallery::where('id', $imageGallery->id)
             ->update($properDataImageGallery);
 

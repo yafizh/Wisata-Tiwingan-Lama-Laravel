@@ -50,11 +50,11 @@ class DashboardDestinationController extends Controller
         // Creating slug
         $duplicate = 0;
         do {
+            $duplicate++;
             $slug = Str::slug((($duplicate > 1) ? ($validatedForm['name'] . '-' . $duplicate) : $validatedForm['name']), '-');
             $validator = Validator::make(["slug" => $slug], [
                 "slug" => "unique:destinations"
             ]);
-            $duplicate++;
         } while ($validator->fails());
 
         $uploadedImages = [];
@@ -125,6 +125,7 @@ class DashboardDestinationController extends Controller
         $duplicate = 0;
         $properSlug = '';
         do {
+            $duplicate++;
             $slug = Str::slug((($duplicate > 1) ? ($validatedForm['name'] . '-' . $duplicate) : $validatedForm['name']), '-');
             $validator = Validator::make(["slug" => $slug], [
                 "slug" => "unique:destinations"
@@ -133,7 +134,6 @@ class DashboardDestinationController extends Controller
                 $properSlug = ['slug' => $destination->slug];
                 break;
             } else $properSlug = $validator->validated();
-            $duplicate++;
         } while ($validator->fails());
 
         $uploadedImages = $request->post('destination_image_in_storage');

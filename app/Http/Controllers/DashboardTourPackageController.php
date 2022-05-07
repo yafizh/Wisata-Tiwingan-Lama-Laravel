@@ -50,11 +50,11 @@ class DashboardTourPackageController extends Controller
         // Creating slug
         $duplicate = 0;
         do {
+            $duplicate++;
             $slug = Str::slug((($duplicate > 1) ? ($validatedForm['name'] . '-' . $duplicate) : $validatedForm['name']), '-');
             $validator = Validator::make(["slug" => $slug], [
                 "slug" => "unique:tour_packages"
             ]);
-            $duplicate++;
         } while ($validator->fails());
 
         $uploadedImages = [];
@@ -125,6 +125,7 @@ class DashboardTourPackageController extends Controller
         $duplicate = 0;
         $properSlug = '';
         do {
+            $duplicate++;
             $slug = Str::slug((($duplicate > 1) ? ($validatedForm['name'] . '-' . $duplicate) : $validatedForm['name']), '-');
             $validator = Validator::make(["slug" => $slug], [
                 "slug" => "unique:tour_packages"
@@ -133,7 +134,6 @@ class DashboardTourPackageController extends Controller
                 $properSlug = ['slug' => $tourPackage->slug];
                 break;
             } else $properSlug = $validator->validated();
-            $duplicate++;
         } while ($validator->fails());
 
         $uploadedImages = $request->post('tour_package_image_in_storage');
