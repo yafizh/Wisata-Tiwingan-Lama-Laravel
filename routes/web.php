@@ -3,10 +3,12 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDestinationController;
 use App\Http\Controllers\DashboardImageGalleryController;
+use App\Http\Controllers\DashboardTourPackageController;
 use App\Http\Controllers\DashboardVideoGalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\VideoController;
+use App\Models\TourPackage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/destination', [HomeController::class, 'destination']);
+Route::get('/tour-package', [HomeController::class, 'tour_package']);
 
 Route::get('/images', [ImageController::class, 'index']);
 Route::get('/images/show', [ImageController::class, 'show']);
@@ -45,4 +48,8 @@ Route::resource('/admin/gallery/videos', DashboardVideoGalleryController::class)
 
 Route::resource('/admin/destinations', DashboardDestinationController::class)->parameters([
     'destinations' => 'destination:slug'
+]);
+
+Route::resource('/admin/tour-packages', DashboardTourPackageController::class)->parameters([
+    'tour-packages' => 'tour-package:slug'
 ]);

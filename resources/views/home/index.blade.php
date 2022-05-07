@@ -60,13 +60,14 @@
                     <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
                         <div class="card">
                             <img src="{{ asset('storage/' . $destination->destination_images[0]->image) }}"
-                                class="card-img-destination card-img-top" />
+                                class="card-img card-img-top" />
                             <div class="card-body" style="height: 200px; overflow: hidden;">
                                 <h5 class="card-title">{{ $destination->name }}</h5>
                                 <p class="card-text">{{ strip_tags($destination->body) }}</p>
                             </div>
                             <div class="card-body">
-                                <button class="btn btn-primary btn-show" data-slug="{{ $destination->slug }}">Lihat
+                                <button class="btn btn-primary btn-show" data-card-type="destination"
+                                    data-slug="{{ $destination->slug }}">Lihat
                                     Selengkapnya...</button>
                             </div>
                         </div>
@@ -111,48 +112,23 @@
                 </div>
             </div>
             <div class="row fs-5 justify-content-center">
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/ojek.jpeg" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Ojek Sepeda Motor</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination1">Lihat Selengkapnya...</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/kapal.jpeg" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Kapal</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination2">Lihat Selengkapnya...</button>
+                @foreach ($tour_packages as $tour_package)
+                    <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $tour_package->tour_package_images[0]->image) }}"
+                                class="card-img card-img-top" />
+                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                                <h5 class="card-title">{{ $tour_package->name }}</h5>
+                                <p class="card-text">{{ strip_tags($tour_package->body) }}</p>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-primary btn-show" data-card-type="tour-package"
+                                    data-slug="{{ $tour_package->slug }}">Lihat
+                                    Selengkapnya...</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="/assets/images/home_stay.jpeg" class="card-img-destination card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Home Stay</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#detailDestination3">Lihat Selengkapnya...</button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -184,20 +160,25 @@
         const get_detail = _ => {
             document.querySelectorAll(".btn-show").forEach((button) => {
                 button.onclick = function() {
-                    fetch('/destination?slug=' + this.getAttribute('data-slug'))
+                    fetch(`/${this.getAttribute('data-card-type')}?slug=${this.getAttribute('data-slug')}`)
                         .then(response => response.json())
                         .then(data => {
-                            $('#show .modal-title').text(data.destination.name);
-                            $('#show .modal-body .body').html(data.destination.body);
+                            let key = '';
+                            if (this.getAttribute('data-card-type') == 'destination') key =
+                                'destination';
+                            else if (this.getAttribute('data-card-type') == 'tour-package') key =
+                                'tour_package';
+
+                            $('#show .modal-title').text(data[key].name);
+                            $('#show .modal-body .body').html(data[key].body);
                             $('#show .modal-body .carousel-inner').append(templates
-                                .show_image_gallery_modal.carousel_inner(data.destination.destination_images,
+                                .show_image_gallery_modal.carousel_inner(data[key][`${key}_images`],
                                     url));
-                            if (data.destination.destination_images.length > 1) {
+                            if (data[key][`${key}_images`].length > 1) {
                                 $('#show .modal-body #carouselGalleryImage .carousel-indicators')
                                     .append(
-                                        templates.show_image_gallery_modal.carousel_indicators(data
-                                            .destination
-                                            .destination_images.length));
+                                        templates.show_image_gallery_modal.carousel_indicators(data[key]
+                                            [`${key}_images`].length));
                                 $('#show .modal-body #carouselGalleryImage').append(templates
                                     .show_image_gallery_modal.carousel_next_prev_button);
                             }
