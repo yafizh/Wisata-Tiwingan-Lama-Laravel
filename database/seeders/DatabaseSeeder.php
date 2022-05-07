@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Destination;
+use App\Models\DestinationImage;
 use App\Models\Image;
 use App\Models\ImageGallery;
+use App\Models\TourPackage;
+use App\Models\TourPackageImage;
 use Database\Factories\ImageGalleriesFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -67,6 +71,94 @@ class DatabaseSeeder extends Seeder
             'image' => 'post-images/4.webp'
         ]);
 
-        // ImageGallery::factory(50)->create();
+        // Destinations
+        Destination::create([
+            'name' => 'Bukit Tiwingan',
+            'slug' => 'bukit-tiwingan',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        DestinationImage::create([
+            'destination_id' => 1,
+            'image' => 'destination_images/bukit_tiwingan.webp'
+        ]);
+
+        DestinationImage::create([
+            'destination_id' => 1,
+            'image' => 'destination_images/bukit_tiwingan_2.webp'
+        ]);
+
+        Destination::create([
+            'name' => 'Alimpung Park',
+            'slug' => 'alimpung-park',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        DestinationImage::create([
+            'destination_id' => 2,
+            'image' => 'destination_images/alimpung_park.webp'
+        ]);
+
+        DestinationImage::create([
+            'destination_id' => 2,
+            'image' => 'destination_images/alimpung_park_2.webp'
+        ]);
+
+        Destination::create([
+            'name' => 'Matang Kaladan',
+            'slug' => 'matang-kaladan',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        DestinationImage::create([
+            'destination_id' => 3,
+            'image' => 'destination_images/matang_kaladan.webp'
+        ]);
+
+        Destination::create([
+            'name' => 'Pancing Jungur',
+            'slug' => 'pancing-jungur',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        DestinationImage::create([
+            'destination_id' => 4,
+            'image' => 'destination_images/pancing_jungur.webp'
+        ]);
+
+        // Tour Packages
+        TourPackage::create([
+            'name' => 'Ojek Sepeda Motor',
+            'slug' => 'ojek-sepeda-motor',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        TourPackageImage::create([
+            'tour_package_id' => 1,
+            'image' => 'tour_package_images/ojek.webp'
+        ]);
+
+        TourPackage::create([
+            'name' => 'Kapal',
+            'slug' => 'kapal',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        TourPackageImage::create([
+            'tour_package_id' => 2,
+            'image' => 'tour_package_images/kapal.webp'
+        ]);
+
+        TourPackage::create([
+            'name' => 'Home Stay',
+            'slug' => 'home-stay',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore quisquam voluptates eius ex, optio beatae repellat aut numquam explicabo earum minima laborum labore cumque architecto animi, possimus, rerum accusantium!',
+        ]);
+
+        TourPackageImage::create([
+            'tour_package_id' => 3,
+            'image' => 'tour_package_images/home_stay.webp'
+        ]);
+
     }
 }
