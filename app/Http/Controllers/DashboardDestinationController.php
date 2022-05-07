@@ -60,7 +60,7 @@ class DashboardDestinationController extends Controller
         $uploadedImages = [];
         if ($request->file('images'))
             foreach ($request->file('images') as $image)
-                $uploadedImages[] = $image->store('destination-images');
+                $uploadedImages[] = $image->store('destination_images');
 
 
         $properDataImageGallery = array_merge($validator->validated(), $validatedForm);
@@ -139,7 +139,7 @@ class DashboardDestinationController extends Controller
         $uploadedImages = $request->post('destination_image_in_storage');
         if ($request->file('images'))
             foreach ($request->file('images') as $image)
-                $uploadedImages[] = $image->store('destination-images');
+                $uploadedImages[] = $image->store('destination_images');
 
         $properDataDestination = array_merge($properSlug, $validatedForm);
         Destination::where('id', $destination->id)
