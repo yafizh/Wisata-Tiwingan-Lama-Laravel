@@ -17,7 +17,7 @@ class DashboardVideoGalleryController extends Controller
     public function index()
     {
         return view('dashboard.video.index', [
-            "videos" => VideoGallery::all()
+            "videos" => VideoGallery::latest()->get()
         ]);
     }
 

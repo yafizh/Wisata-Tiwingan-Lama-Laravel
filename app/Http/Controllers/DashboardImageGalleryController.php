@@ -19,7 +19,7 @@ class DashboardImageGalleryController extends Controller
     public function index()
     {
         return view('dashboard.images.index', [
-            "images" => ImageGallery::all()
+            "images" => ImageGallery::latest()->get()
         ]);
     }
 

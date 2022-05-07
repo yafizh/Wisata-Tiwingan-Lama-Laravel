@@ -19,7 +19,7 @@ class DashboardDestinationController extends Controller
     public function index()
     {
         return view('dashboard.destinations.index', [
-            "destinations" => Destination::all()
+            "destinations" => Destination::latest()->get()
         ]);
     }
 

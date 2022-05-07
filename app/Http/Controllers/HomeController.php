@@ -11,8 +11,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('home.index', [
-            'destinations' => Destination::all(),
-            'tour_packages' => TourPackage::all(),
+            'destinations' => Destination::latest()->get(),
+            'tour_packages' => TourPackage::latest()->get(),
         ]);
     }
 

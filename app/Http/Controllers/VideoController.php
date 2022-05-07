@@ -10,7 +10,7 @@ class VideoController extends Controller
     public function index()
     {
         return view('galery.video.index', [
-            'videoGalleries' => VideoGallery::paginate(12),
+            'videoGalleries' => VideoGallery::latest()->paginate(12),
             'count' => VideoGallery::all()->count()
         ]);
     }

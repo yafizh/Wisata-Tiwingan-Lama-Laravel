@@ -10,7 +10,7 @@ class ImageController extends Controller
     public function index()
     {
         return view('galery.image.index', [
-            'imageGalleries' => ImageGallery::paginate(12),
+            'imageGalleries' => ImageGallery::latest()->paginate(12),
             'count' => ImageGallery::all()->count()
         ]);
     }

@@ -19,7 +19,7 @@ class DashboardTourPackageController extends Controller
     public function index()
     {
         return view('dashboard.tour_packages.index', [
-            "tour_packages" => TourPackage::all()
+            "tour_packages" => TourPackage::latest()->get()
         ]);
     }
 
