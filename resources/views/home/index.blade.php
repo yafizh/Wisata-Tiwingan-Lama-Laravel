@@ -3,9 +3,9 @@
 @section('content')
     <!-- Jumbotron -->
     <section class="jumbotron d-flex align-items-center justify-content-center text-white text-center">
-        <div class="row">
+        <div class="row" style="font-family: 'Cormorant Garamond', serif;">
             <h1 class="display-4 fw-bold">Desa Wisata Tiwingan Lama</h1>
-            <p class="lead fw-light">
+            <p class="lead fw-light fs-4">
                 @foreach ($destinations as $destination)
                     <span class="destination">{{ $destination->name }}</span>
                 @endforeach
@@ -14,61 +14,23 @@
     </section>
     <!-- End Jumbotron -->
 
-    <!-- Village Profile -->
-    <section id="village">
+    <!-- Destination -->
+    <section id="destination">
         <div class="container">
             <div class="row mb-3">
                 <div class="col text-center">
-                    <h2>Desa Tiwingan Lama</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <img src="/assets/images/village.jpg" class="img-thumbnail" alt="Profil Desa Tiwingan Lama" />
-                </div>
-                <div class="col-lg-8 col-md-12 p-3 fs-5">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae velit nobis magni eius ipsum illum
-                    dicta expedita suscipit ea veniam temporibus dolor, debitis ipsam. Veniam asperiores esse harum. Illum,
-                    quisquam. Fugiat quod
-                    blanditiis minus quos autem ab recusandae delectus doloremque molestiae consequuntur aut, obcaecati
-                    libero ipsa magni at veritatis ratione voluptate illo quam possimus eius, nam ea. Obcaecati, eum vero!
-                    Tenetur consequatur
-                    deleniti quidem laboriosceat hic quaerat repellendus adipisci molestias soluta ullam vitae sint
-                    excepturi delectus iure voluptatem sunt dolores? Aliquam, in fuga saepe id quis sapiente nesciunt? Vel,
-                    quisquam.
-                    Iusto id fugiat laudantium nostrum quae itaque doloribus, reprehenderit optio of.
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Village Profile -->
-
-    <div class="container">
-        <hr>
-    </div>
-
-    <!-- Destination -->
-    <section id="destination">
-        <div class="container text-center">
-            <div class="row mb-3">
-                <div class="col">
-                    <h2>Wisata Tiwingan Lama</h2>
+                    <h1 class="fw-bold" style="font-family: 'Cormorant Garamond', serif;">Wisata Tiwingan Lama</h1>
                 </div>
             </div>
             <div class="row fs-5 justify-content-center">
                 @foreach ($destinations as $destination)
-                    <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                        <div class="card">
+                    <div data-card-type="destination" data-slug="{{ $destination->slug }}" class="btn-show col-md-6 col-lg-3 d-flex justify-content-center">
+                        <div class="card pb-3 mt-3">
                             <img src="{{ asset('storage/' . $destination->destination_images[0]->image) }}"
-                                class="card-img card-img-top" />
-                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                                class="card-img" />
+                            <div class="card-body text-center" style="height: 140px; overflow: hidden;">
                                 <h5 class="card-title">{{ $destination->name }}</h5>
                                 <p class="card-text">{{ strip_tags($destination->body) }}</p>
-                            </div>
-                            <div class="card-body">
-                                <button class="btn btn-primary btn-show" data-card-type="destination"
-                                    data-slug="{{ $destination->slug }}">Lihat
-                                    Selengkapnya...</button>
                             </div>
                         </div>
                     </div>
@@ -99,32 +61,92 @@
     </div>
     <!-- End Destination -->
 
-    <div class="container">
+    {{-- <div class="container">
         <hr>
+    </div> --}}
+
+    <style>
+        .divider {
+            width: 100%;
+            height: 40px;
+            background-color: #4E944F;
+            --bottom: radial-gradient(calc(0vh + 40px) at 50% 0vh, #0000 98%, #000);
+            -webkit-mask: var(--bottom);
+            mask: var(--bottom);
+            margin-top: calc(0vh - 40px);
+        }
+
+        .divider2 {
+            width: 100%;
+            height: 40px;
+            background-color: #4E944F;
+            --top: radial-gradient(calc(0vh + 40px) at 50% calc(100% + 0vh), #0000 98%, #000);
+            -webkit-mask: var(--top);
+            mask: var(--top);
+
+        }
+
+    </style>
+    <div class="divider mt-2">
+
     </div>
+
+    <!-- Village Profile -->
+    <section id="village" style="background-color: #4E944F; color: white;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-12">
+                    <img class="img-thumbnail" style="width: 100%; height: 350px;" src="/assets/images/village.jpg"
+                        alt="Profil Desa Tiwingan Lama" />
+                </div>
+                <div style="font-family: 'Cormorant Garamond', serif;" class="col-lg-6 col-md-12 ps-5 py-3 fs-5">
+                    <h1 class="fw-bold">Tiwingan Lama</h1>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae velit nobis magni eius ipsum
+                        illum
+                        dicta expedita suscipit ea veniam temporibus dolor, debitis ipsam. Veniam asperiores esse harum.
+                        Illum,
+                        quisquam. Fugiat quod
+                        blanditiis minus quos autem ab recusandae delectus doloremque molestiae consequuntur aut, obcaecati
+                        libero ipsa magni at veritatis ratione voluptate illo quam possimus eius, nam ea. Obcaecati, eum
+                        vero!
+                        Tenetur consequatur
+                        deleniti quidem laboriosceat hic quaerat repellendus adipisci molestias soluta ullam vitae sint
+                        excepturi delectus iure voluptatem sunt dolores? Aliquam, in fuga saepe id quis sapiente nesciunt?
+                        Vel,
+                        quisquam.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Village Profile -->
+
+    <div class="divider2">
+
+    </div>
+
+    {{-- <div class="container">
+        <hr>
+    </div> --}}
 
     <!-- Destination -->
     <section id="tour-package">
         <div class="container text-center">
             <div class="row mb-3">
                 <div class="col">
-                    <h2>Paket Wisata</h2>
+                    <h1 class="fw-bold" style="font-family: 'Cormorant Garamond', serif;">Paket Wisata</h1>
                 </div>
             </div>
             <div class="row fs-5 justify-content-center">
                 @foreach ($tour_packages as $tour_package)
-                    <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                        <div class="card">
+                    <div data-card-type="tour-package" data-slug="{{ $tour_package->slug }}" class="btn-show col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
+                        <div class="card pb-3">
                             <img src="{{ asset('storage/' . $tour_package->tour_package_images[0]->image) }}"
                                 class="card-img card-img-top" />
-                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                            <div class="card-body" style="height: 140px; overflow: hidden;">
                                 <h5 class="card-title">{{ $tour_package->name }}</h5>
                                 <p class="card-text">{{ strip_tags($tour_package->body) }}</p>
-                            </div>
-                            <div class="card-body">
-                                <button class="btn btn-primary btn-show" data-card-type="tour-package"
-                                    data-slug="{{ $tour_package->slug }}">Lihat
-                                    Selengkapnya...</button>
                             </div>
                         </div>
                     </div>
@@ -134,6 +156,10 @@
     </section>
     <!-- End Destination -->
 
+    <div class="divider mt-2">
+
+    </div>
+
     <script src="/scripts/templates.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -141,8 +167,8 @@
         // Navbar When Scrolling
         document.addEventListener('scroll', function() {
             const navbar = document.querySelector('.fixed-top');
-            const jumbotron = document.querySelector('.jumbotron');
-            if (document.querySelector('html').scrollTop > (jumbotron.offsetHeight - 1)) {
+            // const jumbotron = document.querySelector('.jumbotron');
+            if (document.querySelector('html').scrollTop > 50) {
                 navbar.classList.add('scrolled');
                 navbar.classList.add('navbar-light');
                 navbar.classList.remove('navbar-dark');

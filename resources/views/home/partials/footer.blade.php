@@ -1,4 +1,4 @@
-<footer class="text-center text-white p-5 bg-secondary mt-5">
+<footer class="text-center text-white p-5" style="background-color: #4E944F;">
     <div class="row justify-content-center">
         <div class="col-md-4 col-lg-3 col-xl-2 mb-3 text-start">
             <h5 class="text-start">Kontak</h5>
@@ -11,35 +11,32 @@
             </div>
             <h5 class="text-start mt-4">Sosial Media</h5>
             <div class="row mb-2">
-                <div class="col"><i class="bi bi-instagram"></i> <a href="#"
-                        class="text-white text-decoration-none">Instagram</a></div>
+                <span data-feather="instagram"></span>
+                <a href="#" class="text-white text-decoration-none">Instagram</a>
             </div>
             <div class="row mb-2">
-                <div class="col"><i class="bi bi-facebook"></i> <a href="#"
-                        class="text-white text-decoration-none">Facebook</a></div>
+                <span data-feather="facebook"></span>
+                <a href="#" class="text-white text-decoration-none">Facebook</a>
             </div>
             <div class="row mb-2">
-                <div class="col"><i class="bi bi-twitter"></i> <a href="#"
-                        class="text-white text-decoration-none">Twitter</a></div>
+                <span data-feather="twitter"></span>
+                <a href="#" class="text-white text-decoration-none">Twitter</a>
             </div>
             <div class="row mb-2">
-                <div class="col"><i class="bi bi-youtube"></i> <a href="#"
-                        class="text-white text-decoration-none">Youtube</a></div>
+                <span data-feather="youtube"></span>
+                <a href="#" class="text-white text-decoration-none">Youtube</a>
             </div>
             <div class="row mb-2">
-                <div class="col"><i class="bi bi-pinterest"></i> <a href="#"
-                        class="text-white text-decoration-none">Pinterest</a></div>
+                <a href="#" class="text-white text-decoration-none">Pinterest</a>
             </div>
         </div>
         <div class="col-md-4 col-lg-3 col-xl-2 text-start">
             <h5 class="text-start">Alamat</h5>
             <div class="row mb-2">
-                <div class="col">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis sequi error provident
-                    expedita est accusantium eum quisquam deserunt qui deleniti, quasi voluptas, inventore ipsum
-                    ratione, amet nulla nobis. Vitae,
-                    dolores.
-                </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis sequi error provident
+                expedita est accusantium eum quisquam deserunt qui deleniti, quasi voluptas, inventore ipsum
+                ratione, amet nulla nobis. Vitae,
+                dolores.
             </div>
         </div>
         <div class="col-md-4">

@@ -1,6 +1,9 @@
 const templates = {
     show_image_gallery_modal: {
-        carousel_gallery_image: `<div class="carousel-indicators"></div><div class="carousel-inner"></div>`,
+        carousel_gallery_image: `
+            <div class="carousel-indicators"></div>
+            <div class="carousel-inner"></div>
+        `,
         carousel_indicators: function (n) {
             let buffer = `<button type="button" data-bs-target="#carouselGalleryImage" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`;
 
