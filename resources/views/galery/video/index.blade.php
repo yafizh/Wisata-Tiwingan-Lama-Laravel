@@ -27,8 +27,8 @@
                                     </div>
                                     <div class="card-body row">
                                         <div class="col">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show"
-                                                data-slug="{{ $video->slug }}">Lihat</button>
+                                            <button onclick="get_detail('video', '{{ $video->slug }}')" type="button"
+                                                class="btn btn-sm btn-outline-secondary btn-show">Lihat</button>
                                         </div>
                                         <div class="col-auto pt-1">
                                             <small class="text-muted ms-auto">
@@ -50,51 +50,17 @@
             </div>
         @endif
     </main>
-    {{-- Show Modal --}}
-    <div class="modal fade" id="show" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <iframe width="100%" height="255" title="YouTube video" allowfullscreen>
-                    </iframe>
-                    <div class="p-3 text-start body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    @include('partials.modal_video')
+    <script>
+        // modal.js need 'url' variable
+        const url = '{{ URL::asset('storage') }}';
+    </script>
     <script src="/scripts/templates.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="/scripts/modal.js"></script>
     <script>
-        // Insert data to modal if click button view
-        const get_detail = _ => {
-            document.querySelectorAll(".btn-show").forEach((button) => {
-                button.onclick = function() {
-                    fetch('/videos/show?slug=' + this.getAttribute('data-slug'))
-                        .then(response => response.json())
-                        .then(data => {
-                            $('#show .modal-title').text(data.videoGallery.title);
-                            $('#show .modal-body iframe').attr('src',
-                                `https://www.youtube.com/embed/${data.videoGallery.video}`);
-                            $('#show .modal-body .body').html(data.videoGallery.body);
-                            $('#show').modal('show');
-                        });
-                }
-            });
-        }
-
-        // Reset Modal
-        $('#show').on('hidden.bs.modal', _ => {
-            $('#show .modal-title').text('');
-            $('#show .modal-body .body').text('');
-        });
-
-
         const video_gallery_container = document.querySelector('#video-galleries');
         $(window).scroll(function() {
             if (
@@ -111,11 +77,8 @@
                             video_gallery_container.insertAdjacentHTML('beforeend', templates.video_gallery(data
                                 .videoGallery[i]));
                         }
-                        get_detail();
                     });
             }
         });
-
-        get_detail();
     </script>
 @endsection

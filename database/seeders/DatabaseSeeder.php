@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\ImageGallery;
 use App\Models\TourPackage;
 use App\Models\TourPackageImage;
+use App\Models\VideoGallery;
 use Database\Factories\ImageGalleriesFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -69,6 +70,20 @@ class DatabaseSeeder extends Seeder
         Image::create([
             'image_gallery_id' => 4,
             'image' => 'post-images/4.webp'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'belajar tehnik motong jalan | stumble guys indonesa',
+            'slug' => 'belajar-tehnik-motong-jalan-|-stumble-guys-indonesa',
+            'body' => '<p>belajar tehnik motong jalan | stumble guys indonesa</p><p>Support the stream: https://streamlabs.com/ayogch</p><p>lanjut push mmr masha semoga ga turun | mobile legends bang bang indonesia</p><p>Support channel ini bisa lewat link saweria berikut : https://saweria.co/XbrogGame</p><p>My PC Spec :</p><ul><li>Mic Headphone</li><li>Core i3 10105F</li><li>16 GB</li><li>V GEN NVMe - 256G</li><li>GEFORCE GTX 1650 4GB DDR6</li><li>Webcam - hp</li></ul>',
+            'video' => 'HffHkMDDRgw'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'Yoga Mobile Legend',
+            'slug' => 'yoga-mobile-legend',
+            'body' => '<p>Support the stream: https://streamlabs.com/ayogch</p><p>lanjut push mmr masha semoga ga turun | mobile legends bang bang indonesia</p><p>Support channel ini bisa lewat link saweria berikut : https://saweria.co/XbrogGame</p><p>My PC Spec :</p><ul><li>Mic Headphone</li><li>Core i3 10105F</li><li>16 GB</li><li>V GEN NVMe - 256G</li><li>GEFORCE GTX 1650 4GB DDR6</li><li>Webcam - hp</li></ul>',
+            'video' => 'l7pk6_jFx_Y'
         ]);
 
         // Destinations
@@ -159,6 +174,5 @@ class DatabaseSeeder extends Seeder
             'tour_package_id' => 3,
             'image' => 'tour_package_images/home_stay.webp'
         ]);
-
     }
 }

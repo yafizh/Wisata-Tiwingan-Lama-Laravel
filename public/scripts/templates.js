@@ -1,6 +1,15 @@
 const templates = {
-    show_image_gallery_modal: {
-        carousel_gallery_image: `<div class="carousel-indicators"></div><div class="carousel-inner"></div>`,
+    modal: {
+        modal_image_body: `
+            <div id="carouselGalleryImage" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators"></div>
+                <div class="carousel-inner"></div>
+            </div>
+            <div class="p-3 text-start body"></div>`,
+        modal_video_body: `
+            <iframe width="100%" height="255" title="YouTube video" allowfullscreen>
+            </iframe>
+            <div class="p-3 text-start body"></div>`,
         carousel_indicators: function (n) {
             let buffer = `<button type="button" data-bs-target="#carouselGalleryImage" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`;
 
@@ -27,7 +36,7 @@ const templates = {
                     <img src="${uri}/${data[0].image}" style="height: 255px; object-fit: cover;" class="d-block w-100">
                 </div>`;
 
-            for (let i = 1; i < data.length; i++) {
+            for (let i = 0; i < data.length - 1; i++) {
                 buffer += `
                     <div class="carousel-item">
                         <img src="${uri}/${data[i].image}" style="height: 255px; object-fit: cover;" class="d-block w-100">
@@ -47,7 +56,7 @@ const templates = {
                     </div>
                     <div class="card-body row">
                         <div class="col">
-                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show" data-slug="${imageGallery.slug}">Lihat</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show" onclick="get_detail('image', '${imageGallery.slug}')">Lihat</button>
                         </div>
                         <div class="col-auto pt-1">
                             <small class="text-muted ms-auto">
@@ -72,7 +81,7 @@ const templates = {
                     </div>
                     <div class="card-body row">
                         <div class="col">
-                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show" data-slug="${videoGallery.slug}">Lihat</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-show" onclick="get_detail('video', '${videoGallery.slug}')">Lihat</button>
                         </div>
                         <div class="col-auto pt-1">
                             <small class="text-muted ms-auto">

@@ -33,8 +33,7 @@
                                 <p class="card-text">{{ strip_tags($destination->body) }}</p>
                             </div>
                             <div class="card-body">
-                                <button class="btn btn-primary btn-show" data-card-type="destination"
-                                    data-slug="{{ $destination->slug }}">Lihat
+                                <button data-slug="{{ $destination->slug }}" class="btn btn-primary btn-show">Lihat
                                     Selengkapnya...</button>
                             </div>
                         </div>
@@ -43,6 +42,7 @@
             </div>
         </div>
     </section>
+    {{-- End Destination --}}
 
     <div class="container">
         <hr>
@@ -100,8 +100,7 @@
                                 <p class="card-text">{{ strip_tags($tour_package->body) }}</p>
                             </div>
                             <div class="card-body">
-                                <button class="btn btn-primary btn-show" data-card-type="tour-package"
-                                    data-slug="{{ $tour_package->slug }}">Lihat
+                                <button data-slug="{{ $tour_package->slug }}" class="btn btn-primary btn-show">Lihat
                                     Selengkapnya...</button>
                             </div>
                         </div>
@@ -110,34 +109,17 @@
             </div>
         </div>
     </section>
-    <!-- End Destination -->
+    <!-- End Tour Package -->
 
-    {{-- Show Modal --}}
-    <div class="modal fade" id="show" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <div id="carouselGalleryImage" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                        </div>
-                        <div class="carousel-inner">
-                        </div>
-                    </div>
-                    <div class="p-3 text-start body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Destination -->
-
+    @include('partials.modal_image')
+    <script>
+        // modal.js need 'url' variable
+        const url = '{{ URL::asset('storage') }}';
+    </script>
     <script src="/scripts/templates.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="/scripts/modal.js"></script>
     <script>
         // Navbar When Scrolling
         document.addEventListener('scroll', function() {
@@ -154,50 +136,20 @@
             }
         });
 
-
-        const url = '{{ URL::asset('storage') }}';
-
-        // Insert data to modal if click button view
-        const get_detail = _ => {
-            document.querySelectorAll(".btn-show").forEach((button) => {
-                button.onclick = function() {
-                    fetch(`/${this.getAttribute('data-card-type')}?slug=${this.getAttribute('data-slug')}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            let key = '';
-                            if (this.getAttribute('data-card-type') == 'destination') key =
-                                'destination';
-                            else if (this.getAttribute('data-card-type') == 'tour-package') key =
-                                'tour_package';
-
-                            $('#show .modal-title').text(data[key].name);
-                            $('#show .modal-body .body').html(data[key].body);
-                            $('#show .modal-body .carousel-inner').append(templates
-                                .show_image_gallery_modal.carousel_inner(data[key][`${key}_images`],
-                                    url));
-                            if (data[key][`${key}_images`].length > 1) {
-                                $('#show .modal-body #carouselGalleryImage .carousel-indicators')
-                                    .append(
-                                        templates.show_image_gallery_modal.carousel_indicators(data[key]
-                                            [`${key}_images`].length));
-                                $('#show .modal-body #carouselGalleryImage').append(templates
-                                    .show_image_gallery_modal.carousel_next_prev_button);
-                            }
-                            $('#show').modal('show');
-                        })
-                        .catch(error => console.log(error));
-                }
+        document
+            .querySelectorAll('#tour-package .btn-show')
+            .forEach(button => {
+                button.addEventListener('click', _ => {
+                    get_detail('tour_package', button.getAttribute('data-slug'))
+                });
             });
-        }
 
-        // Reset Modal
-        $('#show').on('hidden.bs.modal', _ => {
-            $('#show .modal-title').text('');
-            $('#show .modal-body .body').text('');
-            $('#show .modal-body #carouselGalleryImage').html(templates.show_image_gallery_modal
-                .carousel_gallery_image);
-        });
-
-        get_detail();
+        document
+            .querySelectorAll('#destination .btn-show')
+            .forEach(button => {
+                button.addEventListener('click', _ => {
+                    get_detail('destination', button.getAttribute('data-slug'))
+                });
+            });
     </script>
 @endsection
