@@ -6,31 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Dewi Tilam | Galeri Gambar</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Dewi Tilam | Galeri Gambar</title>
-    <style>
-        .album .container .col .card img {
-            width: 100%;
-            height: 255px;
-            object-fit: cover;
-        }
-
-        .card-text {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
-            overflow: hidden;
-        }
-
-        .modal-content {
-            border: 0;
-            overflow: hidden;
-        }
-
-    </style>
+    {{-- My Style --}}
+    <link rel="stylesheet" href="/css/gallery.css">
 </head>
 
 <body>

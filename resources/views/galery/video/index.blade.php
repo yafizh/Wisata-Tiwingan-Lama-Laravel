@@ -16,8 +16,7 @@
                         @foreach ($videoGalleries as $video)
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <iframe loading="lazy" width="100%" height="255"
-                                        src="https://www.youtube.com/embed/{{ $video->video }}" title="YouTube video"
+                                    <iframe src="https://www.youtube.com/embed/{{ $video->video }}" title="YouTube video"
                                         allowfullscreen>
                                     </iframe>
                                     <div class="card-body" style="height: 100px;">
@@ -25,7 +24,7 @@
                                             {{ $video->title }}
                                         </div>
                                     </div>
-                                    <div class="card-body row">
+                                    <div class="row p-3">
                                         <div class="col">
                                             <button onclick="get_detail('video', '{{ $video->slug }}')" type="button"
                                                 class="btn btn-sm btn-outline-secondary btn-show">Lihat</button>

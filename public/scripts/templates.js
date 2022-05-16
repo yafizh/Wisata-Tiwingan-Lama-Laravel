@@ -33,13 +33,13 @@ const templates = {
         carousel_inner: function (data, uri) {
             let buffer = `
                 <div class="carousel-item active">
-                    <img src="${uri}/${data[0].image}" style="height: 255px; object-fit: cover;" class="d-block w-100">
+                    <img src="${uri}/${data[0].image}" class="d-block w-100">
                 </div>`;
 
             for (let i = 0; i < data.length - 1; i++) {
                 buffer += `
                     <div class="carousel-item">
-                        <img src="${uri}/${data[i].image}" style="height: 255px; object-fit: cover;" class="d-block w-100">
+                        <img src="${uri}/${data[i].image}" class="d-block w-100">
                     </div>`;
             }
 
@@ -51,10 +51,10 @@ const templates = {
             <div class="col">
                 <div class="card shadow-sm">
                     <img src="${uri}/${imageGallery.images[0].image}">
-                    <div class="card-body" style="height: 100px;">
+                    <div class="card-body"">
                         <div class="card-text fs-5">${imageGallery.title}</div>
                     </div>
-                    <div class="card-body row">
+                    <div class="row p-3">
                         <div class="col">
                             <button type="button" class="btn btn-sm btn-outline-secondary btn-show" onclick="get_detail('image', '${imageGallery.slug}')">Lihat</button>
                         </div>
@@ -72,11 +72,10 @@ const templates = {
         return `
             <div class="col">
                 <div class="card shadow-sm">
-                    <iframe loading="lazy" width="100%" height="255"
-                        src="https://www.youtube.com/embed/${videoGallery.video}" title="YouTube video"
+                    <iframe src="https://www.youtube.com/embed/${videoGallery.video}" title="YouTube video"
                         allowfullscreen>
                     </iframe>
-                    <div class="card-body" style="height: 100px;">
+                    <div class="card-body">
                         <div class="card-text fs-5">${videoGallery.title}</div>
                     </div>
                     <div class="card-body row">

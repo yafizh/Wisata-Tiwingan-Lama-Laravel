@@ -17,12 +17,12 @@
                             <div class="col">
                                 <div class="card shadow-sm">
                                     <img src="{{ asset('storage/' . $imageGallery->images[0]->image) }}">
-                                    <div class="card-body" style="height: 100px;">
+                                    <div class="card-body">
                                         <div class="card-text fs-5">
                                             {{ $imageGallery->title }}
                                         </div>
                                     </div>
-                                    <div class="card-body row">
+                                    <div class="row p-3">
                                         <div class="col">
                                             <button onclick="get_detail('image', '{{ $imageGallery->slug }}')"
                                                 type="button"

@@ -28,11 +28,11 @@
                         <div class="card">
                             <img src="{{ asset('storage/' . $destination->destination_images[0]->image) }}"
                                 class="card-img card-img-top" />
-                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                            <div class="card-body">
                                 <h5 class="card-title">{{ $destination->name }}</h5>
                                 <p class="card-text">{{ strip_tags($destination->body) }}</p>
                             </div>
-                            <div class="card-body">
+                            <div class="p-3">
                                 <button data-slug="{{ $destination->slug }}" class="btn btn-primary btn-show">Lihat
                                     Selengkapnya...</button>
                             </div>
@@ -95,11 +95,11 @@
                         <div class="card">
                             <img src="{{ asset('storage/' . $tour_package->tour_package_images[0]->image) }}"
                                 class="card-img card-img-top" />
-                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                            <div class="card-body">
                                 <h5 class="card-title">{{ $tour_package->name }}</h5>
                                 <p class="card-text">{{ strip_tags($tour_package->body) }}</p>
                             </div>
-                            <div class="card-body">
+                            <div class="p-3">
                                 <button data-slug="{{ $tour_package->slug }}" class="btn btn-primary btn-show">Lihat
                                     Selengkapnya...</button>
                             </div>
@@ -120,36 +120,5 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="/scripts/modal.js"></script>
-    <script>
-        // Navbar When Scrolling
-        document.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.fixed-top');
-            const jumbotron = document.querySelector('.jumbotron');
-            if (document.querySelector('html').scrollTop > (jumbotron.offsetHeight - 700)) {
-                navbar.classList.add('scrolled');
-                navbar.classList.add('navbar-light');
-                navbar.classList.remove('navbar-dark');
-            } else {
-                navbar.classList.remove('scrolled');
-                navbar.classList.remove('navbar-light');
-                navbar.classList.add('navbar-dark');
-            }
-        });
-
-        document
-            .querySelectorAll('#tour-package .btn-show')
-            .forEach(button => {
-                button.addEventListener('click', _ => {
-                    get_detail('tour_package', button.getAttribute('data-slug'))
-                });
-            });
-
-        document
-            .querySelectorAll('#destination .btn-show')
-            .forEach(button => {
-                button.addEventListener('click', _ => {
-                    get_detail('destination', button.getAttribute('data-slug'))
-                });
-            });
-    </script>
+    <script src="/scripts/home.js"></script>
 @endsection
