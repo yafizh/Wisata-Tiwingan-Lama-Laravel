@@ -14,6 +14,40 @@
     </section>
     <!-- End Jumbotron -->
 
+    <!-- Destination -->
+    <section id="destination">
+        <div class="container text-center">
+            <div class="row mb-3">
+                <div class="col">
+                    <h2>Wisata Tiwingan Lama</h2>
+                </div>
+            </div>
+            <div class="row fs-5 justify-content-center">
+                @foreach ($destinations as $destination)
+                    <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $destination->destination_images[0]->image) }}"
+                                class="card-img card-img-top" />
+                            <div class="card-body" style="height: 200px; overflow: hidden;">
+                                <h5 class="card-title">{{ $destination->name }}</h5>
+                                <p class="card-text">{{ strip_tags($destination->body) }}</p>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-primary btn-show" data-card-type="destination"
+                                    data-slug="{{ $destination->slug }}">Lihat
+                                    Selengkapnya...</button>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <hr>
+    </div>
+
     <!-- Village Profile -->
     <section id="village">
         <div class="container">
@@ -47,63 +81,7 @@
         <hr>
     </div>
 
-    <!-- Destination -->
-    <section id="destination">
-        <div class="container text-center">
-            <div class="row mb-3">
-                <div class="col">
-                    <h2>Wisata Tiwingan Lama</h2>
-                </div>
-            </div>
-            <div class="row fs-5 justify-content-center">
-                @foreach ($destinations as $destination)
-                    <div class="col-md-6 col-lg-3 mt-3 d-flex justify-content-center">
-                        <div class="card">
-                            <img src="{{ asset('storage/' . $destination->destination_images[0]->image) }}"
-                                class="card-img card-img-top" />
-                            <div class="card-body" style="height: 200px; overflow: hidden;">
-                                <h5 class="card-title">{{ $destination->name }}</h5>
-                                <p class="card-text">{{ strip_tags($destination->body) }}</p>
-                            </div>
-                            <div class="card-body">
-                                <button class="btn btn-primary btn-show" data-card-type="destination"
-                                    data-slug="{{ $destination->slug }}">Lihat
-                                    Selengkapnya...</button>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    {{-- Show Modal --}}
-    <div class="modal fade" id="show" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <div id="carouselGalleryImage" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                        </div>
-                        <div class="carousel-inner">
-                        </div>
-                    </div>
-                    <div class="p-3 text-start body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Destination -->
-
-    <div class="container">
-        <hr>
-    </div>
-
-    <!-- Destination -->
+    <!-- Tour Package -->
     <section id="tour-package">
         <div class="container text-center">
             <div class="row mb-3">
@@ -134,6 +112,29 @@
     </section>
     <!-- End Destination -->
 
+    {{-- Show Modal --}}
+    <div class="modal fade" id="show" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="carouselGalleryImage" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                        </div>
+                        <div class="carousel-inner">
+                        </div>
+                    </div>
+                    <div class="p-3 text-start body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Destination -->
+
     <script src="/scripts/templates.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -142,7 +143,7 @@
         document.addEventListener('scroll', function() {
             const navbar = document.querySelector('.fixed-top');
             const jumbotron = document.querySelector('.jumbotron');
-            if (document.querySelector('html').scrollTop > (jumbotron.offsetHeight - 1)) {
+            if (document.querySelector('html').scrollTop > (jumbotron.offsetHeight - 700)) {
                 navbar.classList.add('scrolled');
                 navbar.classList.add('navbar-light');
                 navbar.classList.remove('navbar-dark');
