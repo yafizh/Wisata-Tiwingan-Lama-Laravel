@@ -1,8 +1,33 @@
+/* Alternative Jumbotron Font */
+/* font-family: 'Cormorant Garamond', serif; */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Jumbotron Font */
+/* font-family: "Kaushan Script", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+/* Brand Font */
+/* font-family: "Water Brush", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
+
+.navbar a {
+    padding: 16px;
+}
+.navbar .navbar-brand {
+    font-family: "Water Brush", cursive;
+    letter-spacing: 4px;
+}
+
+.navbar ul li {
+    font-family: serif;
+}
+
 .jumbotron {
     background-image: url("/assets/images/jumbotron.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
+    font-family: "Kaushan Script", cursive;
 }
 
 #village img {
@@ -22,7 +47,13 @@
 #destination,
 #tour-package,
 #village {
-    padding: 5rem 0;
+    padding: 6rem 0;
+}
+
+#destination h2,
+#tour-package h2,
+#village h2 {
+    font-family: serif;
 }
 
 .card {
@@ -52,7 +83,7 @@
 @media only screen and (min-width: 550px) {
     .jumbotron .destination:not(:last-child):after {
         display: inline;
-        content: " | ";
+        content: " - ";
     }
 }
 

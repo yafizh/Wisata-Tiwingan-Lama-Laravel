@@ -11,10 +11,10 @@
                     <a class="nav-link active" href="#home">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#village">Desa</a>
+                    <a class="nav-link active" href="#destination">Wisata</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#destination">Wisata</a>
+                    <a class="nav-link active" href="#village">Desa</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#tour-package">Paket Wisata</a>
