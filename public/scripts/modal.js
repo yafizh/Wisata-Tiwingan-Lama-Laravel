@@ -12,6 +12,7 @@ const reset_modal = (modal_type) => {
 
 // Insert data to modal if click button view
 const get_detail = (data_type, slug) => {
+    document.querySelector('.overlay').classList.toggle('d-none');
     if (data_type === "destination" || data_type === "tour_package") {
         fetch(`/${data_type.replace("_", "-")}?slug=${slug}`)
             .then((response) => response.json())
@@ -36,6 +37,7 @@ const get_detail = (data_type, slug) => {
                         templates.modal.carousel_next_prev_button
                     );
                 }
+                document.querySelector('.overlay').classList.toggle('d-none');
                 $("#show").modal("show");
             })
             .catch((error) => console.log(error));
@@ -64,6 +66,7 @@ const get_detail = (data_type, slug) => {
                         templates.modal.carousel_next_prev_button
                     );
                 }
+                document.querySelector('.overlay').classList.toggle('d-none');
                 $("#show").modal("show");
             });
         reset_modal("image");
@@ -77,6 +80,7 @@ const get_detail = (data_type, slug) => {
                     `https://www.youtube.com/embed/${data.videoGallery.video}`
                 );
                 $("#show .modal-body .body").html(data.videoGallery.body);
+                document.querySelector('.overlay').classList.toggle('d-none');
                 $("#show").modal("show");
             });
         reset_modal("video");

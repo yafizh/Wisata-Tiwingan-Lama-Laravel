@@ -2,6 +2,7 @@
 
 @section('content')
     <main>
+        @include('partials.loader')
         <section class="pt-5 pb-3 container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto text-center">

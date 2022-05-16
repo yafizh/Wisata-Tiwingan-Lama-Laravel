@@ -1,6 +1,7 @@
 @extends('home/layouts/main')
 
 @section('content')
+    @include('partials.loader')
     <!-- Jumbotron -->
     <section class="jumbotron d-flex align-items-center justify-content-center text-white text-center">
         <div class="row">
