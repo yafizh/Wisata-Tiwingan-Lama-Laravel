@@ -10,10 +10,16 @@
 /* font-family: "Water Brush", cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
 
+.dewi-tilam-text {
+    font-family: serif;
+}
+
 .navbar a {
     padding: 16px;
 }
-.navbar .navbar-brand {
+
+.navbar .navbar-brand,
+.footer-brand {
     font-family: "Water Brush", cursive;
     letter-spacing: 4px;
 }
@@ -77,22 +83,10 @@
     object-fit: cover;
 }
 
-.card .card-body {
-    height: 100px;
-    padding-bottom: 0;
-}
-
 .card .card-text {
-    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-}
-
-.card img {
-    width: 100%;
-    height: 255px;
-    object-fit: cover;
+    -webkit-line-clamp: 5;
 }
 
 .fixed-top {
@@ -103,6 +97,14 @@
     background-color: #fff !important;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     transition: background-color 200ms linear;
+}
+
+footer {
+    padding: 6rem;
+}
+
+footer #join-us div a {
+    color: white;
 }
 
 @media only screen and (min-width: 550px) {

@@ -4,7 +4,7 @@
     @include('partials.loader')
     <!-- Jumbotron -->
     <section class="jumbotron d-flex align-items-center justify-content-center text-white text-center">
-        <div class="row">
+        <div class="row g-0">
             <h1 class="display-4 fw-bold">Desa Wisata Tiwingan Lama</h1>
             <p class="lead fw-light">
                 @foreach ($destinations as $destination)
@@ -18,7 +18,7 @@
     <!-- Destination -->
     <section id="destination">
         <div class="container text-center">
-            <div class="row mb-3">
+            <div class="row g-0 mb-3">
                 <h2>Wisata Tiwingan Lama</h2>
             </div>
             <div class="row fs-5 justify-content-center">
@@ -50,10 +50,10 @@
     <!-- Village Profile -->
     <section id="village">
         <div class="container">
-            <div class="row mb-3 text-center">
+            <div class="row g-0 mb-3 text-center">
                 <h2>Desa Tiwingan Lama</h2>
             </div>
-            <div class="row">
+            <div class="row g-0">
                 <div class="col-lg-4 col-md-12">
                     <img src="/assets/images/village.jpg" class="img-thumbnail" alt="Profil Desa Tiwingan Lama" />
                 </div>
@@ -81,7 +81,7 @@
     <!-- Tour Package -->
     <section id="tour-package">
         <div class="container text-center">
-            <div class="row mb-3">
+            <div class="row g-0 mb-3">
                 <h2>Paket Wisata</h2>
             </div>
             <div class="row fs-5 justify-content-center">
@@ -112,8 +112,6 @@
         const url = '{{ URL::asset('storage') }}';
     </script>
     <script src="/scripts/templates.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="/scripts/modal.js"></script>
     <script src="/scripts/home.js"></script>
 @endsection
