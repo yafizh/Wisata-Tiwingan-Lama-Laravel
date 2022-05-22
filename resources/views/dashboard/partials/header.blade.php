@@ -4,6 +4,11 @@
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <form action="/{{ Route::getCurrentRoute()->uri() }}" method="get" class="w-100">
+        <input class="form-control form-control-dark" name="search"
+            value="{{ request('search') }}" type="text" placeholder="Search"
+            aria-label="Search">
+    </form>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
             <a class="nav-link px-3" href="#">Sign out</a>

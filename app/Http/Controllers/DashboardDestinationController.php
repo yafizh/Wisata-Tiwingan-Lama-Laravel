@@ -19,7 +19,7 @@ class DashboardDestinationController extends Controller
     public function index()
     {
         return view('dashboard.destinations.index', [
-            "destinations" => Destination::latest()->get()
+            "destinations" => Destination::where('name', 'like', '%'.request('search').'%')->latest()->get()
         ]);
     }
 
