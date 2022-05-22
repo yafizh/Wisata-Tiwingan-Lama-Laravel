@@ -1,3 +1,11 @@
+/* Jumbotron Font */
+/* font-family: "Kaushan Script", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+/* Brand Font */
+/* font-family: "Water Brush", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
+
 body {
   font-size: .875rem;
 }
@@ -82,19 +90,22 @@ body {
   right: 1rem;
 }
 
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
+/* My Styles */
+.brand {
+    font-family: "Kaushan Script", cursive;
+    font-size: 3rem;
 }
 
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
+.navbar-brand {
+    font-family: "Water Brush", cursive;
+    letter-spacing: 4px;
 }
 
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+.table th.fit {
+    text-align: center;
+}
+.table th.fit,
+.table td.fit {
+    width: 1%;
+    white-space: nowrap;
 }

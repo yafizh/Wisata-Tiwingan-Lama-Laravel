@@ -5,28 +5,11 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Galery Video</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                    <span data-feather="calendar"></span>
-                    This week
-                </button>
                 <div class="btn-group ms-2">
                     <a href="/admin/gallery/videos/create" class="btn btn-sm btn-primary">Tambah</a>
                 </div>
             </div>
         </div>
-
-        <style>
-            .table th.fit {
-                text-align: center;
-            }
-            .table th.fit,
-            .table td.fit {
-                width: 1%;
-                white-space: nowrap;
-            }
-
-        </style>
-
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
