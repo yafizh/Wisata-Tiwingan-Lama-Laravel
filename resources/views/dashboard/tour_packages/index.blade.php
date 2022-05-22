@@ -20,18 +20,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tour_packages as $tour_package)
+                    @foreach ($tour_packages as $i => $tour_package)
                         <tr>
-                            <td class="fit">{{ $loop->iteration }}</td>
+                            <td class="fit">{{ $tour_packages->firstItem() + $i }}</td>
                             <td>{{ $tour_package->name }}</td>
                             <td class="fit">
                                 <a href="/admin/tour-packages/{{ $tour_package->slug }}" class="badge bg-info"><span
                                         data-feather="eye"></span></a>
 
-                                <a href="/admin/tour-packages/{{ $tour_package->slug }}/edit" class="badge bg-warning"><span
-                                        data-feather="edit"></span></a>
+                                <a href="/admin/tour-packages/{{ $tour_package->slug }}/edit"
+                                    class="badge bg-warning"><span data-feather="edit"></span></a>
 
-                                <form action="/admin/tour-packages/{{ $tour_package->slug }}" method="post" class="d-inline">
+                                <form action="/admin/tour-packages/{{ $tour_package->slug }}" method="post"
+                                    class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span
@@ -42,6 +43,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-end">
+            {{ $tour_packages->links() }}
         </div>
     </main>
 @endsection

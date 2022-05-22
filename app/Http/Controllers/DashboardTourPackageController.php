@@ -19,7 +19,7 @@ class DashboardTourPackageController extends Controller
     public function index()
     {
         return view('dashboard.tour_packages.index', [
-            "tour_packages" => TourPackage::where('name', 'like', '%'.request('search').'%')->latest()->get()
+            "tour_packages" => TourPackage::where('name', 'like', '%' . request('search') . '%')->latest()->paginate(10)
         ]);
     }
 

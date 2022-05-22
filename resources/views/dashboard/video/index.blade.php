@@ -20,9 +20,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($videos as $video)
+                    @foreach ($videos as $i => $video)
                         <tr>
-                            <td class="fit">{{ $loop->iteration }}</td>
+                            <td class="fit">{{ $videos->firstItem() + $i }}</td>
                             <td>{{ $video->title }}</td>
                             <td class="fit">
                                 <a href="/admin/gallery/videos/{{ $video->slug }}" class="badge bg-info"><span
@@ -31,7 +31,8 @@
                                 <a href="/admin/gallery/videos/{{ $video->slug }}/edit" class="badge bg-warning"><span
                                         data-feather="edit"></span></a>
 
-                                <form action="/admin/gallery/videos/{{ $video->slug }}" method="post" class="d-inline">
+                                <form action="/admin/gallery/videos/{{ $video->slug }}" method="post"
+                                    class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span
@@ -42,6 +43,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-end">
+            {{ $videos->links() }}
         </div>
     </main>
 @endsection

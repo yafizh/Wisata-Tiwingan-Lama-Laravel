@@ -19,7 +19,7 @@ class DashboardImageGalleryController extends Controller
     public function index()
     {
         return view('dashboard.images.index', [
-            "images" => ImageGallery::where('title', 'like', '%'.request('search').'%')->latest()->get()
+            "images" => ImageGallery::where('title', 'like', '%'.request('search').'%')->latest()->paginate(10)
         ]);
     }
 

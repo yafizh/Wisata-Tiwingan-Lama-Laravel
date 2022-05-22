@@ -17,7 +17,7 @@ class DashboardVideoGalleryController extends Controller
     public function index()
     {
         return view('dashboard.video.index', [
-            "videos" => VideoGallery::where('title', 'like', '%'.request('search').'%')->latest()->get()
+            "videos" => VideoGallery::where('title', 'like', '%'.request('search').'%')->latest()->paginate(10)
         ]);
     }
 

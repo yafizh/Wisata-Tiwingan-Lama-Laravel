@@ -20,9 +20,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($destinations as $destination)
+                    @foreach ($destinations as $i => $destination)
                         <tr>
-                            <td class="fit">{{ $loop->iteration }}</td>
+                            <td class="fit">{{ $destinations->firstItem() + $i }}</td>
                             <td>{{ $destination->name }}</td>
                             <td class="fit">
                                 <a href="/admin/destinations/{{ $destination->slug }}" class="badge bg-info"><span
@@ -31,7 +31,8 @@
                                 <a href="/admin/destinations/{{ $destination->slug }}/edit" class="badge bg-warning"><span
                                         data-feather="edit"></span></a>
 
-                                <form action="/admin/destinations/{{ $destination->slug }}" method="post" class="d-inline">
+                                <form action="/admin/destinations/{{ $destination->slug }}" method="post"
+                                    class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span
@@ -42,6 +43,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-end">
+            {{ $destinations->links() }}
         </div>
     </main>
 @endsection
