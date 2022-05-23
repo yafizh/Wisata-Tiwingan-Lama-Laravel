@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\ImageGallery;
 use App\Models\TourPackage;
 use App\Models\TourPackageImage;
+use App\Models\User;
 use App\Models\VideoGallery;
 use Database\Factories\ImageGalleriesFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,6 +24,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        User::create([
+            'username' => 'sandhikagalih',
+            'password' => bcrypt('password')
+        ]);
+
         ImageGallery::create([
             'title' => "Tiwingan Lama Desa Wisata Dengan Pesona Raja Ampat",
             'slug' => "tiwingan-lama-desa-wisata-dengan-pesona-raja-ampat",

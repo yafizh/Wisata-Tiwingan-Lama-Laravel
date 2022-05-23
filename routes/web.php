@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardTourPackageController;
 use App\Http\Controllers\DashboardVideoGalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VideoController;
 use App\Models\TourPackage;
 use Illuminate\Support\Facades\Route;
@@ -36,20 +37,24 @@ Route::get('/videos/getMore', [VideoController::class, 'getMore']);
 
 
 
-Route::get('/admin', [DashboardController::class, 'index']);
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::resource('/admin/gallery/images', DashboardImageGalleryController::class)->parameters([
     'images' => 'imageGallery:slug'
-]);
+])->middleware('auth');
 
 Route::resource('/admin/gallery/videos', DashboardVideoGalleryController::class)->parameters([
     'videos' => 'videoGallery:slug'
-]);
+])->middleware('auth');
 
 Route::resource('/admin/destinations', DashboardDestinationController::class)->parameters([
     'destinations' => 'destination:slug'
-]);
+])->middleware('auth');
 
 Route::resource('/admin/tour-packages', DashboardTourPackageController::class)->parameters([
     'tour-packages' => 'tour-package:slug'
-]);
+])->middleware('auth');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
