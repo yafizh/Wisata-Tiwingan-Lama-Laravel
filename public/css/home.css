@@ -52,13 +52,15 @@
 
 #destination,
 #tour-package,
-#village {
+#village,
+#about-us {
     padding: 6rem 0;
 }
 
 #destination h2,
 #tour-package h2,
-#village h2 {
+#village h2,
+#about-us h2 {
     padding-bottom: 2rem;
     font-family: serif;
 }
@@ -103,8 +105,22 @@ footer {
     padding: 6rem;
 }
 
-footer #join-us div a {
-    color: white;
+
+#join-us div a {
+    color: #212121;
+}
+
+#join-us div a:hover {
+    color: #0d6efd;
+}
+
+#email:hover {
+    color: #0d6efd;
+    cursor: pointer;
+}
+
+.join-us-font-size {
+    font-size: 24px;
 }
 
 @media only screen and (min-width: 550px) {

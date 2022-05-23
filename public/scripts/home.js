@@ -27,3 +27,61 @@ document.querySelectorAll("#destination .btn-show").forEach((button) => {
         get_detail("destination", button.getAttribute("data-slug"));
     });
 });
+
+$("#join-us").mouseleave(function () {
+    if ($("#footer-brand").text() !== "Dewi Tilam") {
+        $("#footer-brand").fadeOut("fast", function () {
+            $(this).addClass("footer-brand");
+            $(this).removeClass("join-us-font-size");
+            $(this).text("Dewi Tilam");
+        });
+        $("#footer-brand").fadeIn("fast");
+    }
+});
+$("#instagram").mouseenter(function () {
+    if ($("#footer-brand").text() !== "@dewitilam") {
+        $("#footer-brand").fadeOut("fast", function () {
+            $(this).removeClass("footer-brand");
+            $(this).addClass("dewi-tilam-text");
+            $(this).addClass("join-us-font-size");
+            $(this).text("@dewitilam");
+        });
+        $("#footer-brand").fadeIn("fast");
+    }
+});
+
+$("#email").mouseenter(function () {
+    if ($("#footer-brand").text() !== "desatiwinganlama@gmail.com") {
+        $("#footer-brand").fadeOut("fast", function () {
+            $(this).removeClass("footer-brand");
+            $(this).addClass("dewi-tilam-text");
+            $(this).addClass("join-us-font-size");
+            $(this).text("desatiwinganlama@gmail.com");
+        });
+        $("#footer-brand").fadeIn("fast");
+    }
+});
+
+$("#whatsapp").mouseenter(function () {
+    if ($("#footer-brand").text() !== "(0811) 1234 5678") {
+        $("#footer-brand").fadeOut("fast", function () {
+            $(this).removeClass("footer-brand");
+            $(this).addClass("dewi-tilam-text");
+            $(this).addClass("join-us-font-size");
+            $(this).text("(0811) 1234 5678");
+        });
+        $("#footer-brand").fadeIn("fast");
+    }
+});
+
+$("#location").mouseenter(function () {
+    if ($("#footer-brand").text() !== "Desa Tiwingan Lama") {
+        $("#footer-brand").fadeOut("fast", function () {
+            $(this).removeClass("footer-brand");
+            $(this).addClass("dewi-tilam-text");
+            $(this).addClass("join-us-font-size");
+            $(this).text("Desa Tiwingan Lama");
+        });
+        $("#footer-brand").fadeIn("fast");
+    }
+});

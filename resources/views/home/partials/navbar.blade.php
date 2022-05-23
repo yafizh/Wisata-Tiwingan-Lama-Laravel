@@ -20,6 +20,9 @@
                     <a class="nav-link active" href="#tour-package">Paket Wisata</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" href="#about-us">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" href="#">|</a>
                 </li>
                 <li class="nav-item">
