@@ -1,3 +1,26 @@
+/* Jumbotron Font */
+/* font-family: "Kaushan Script", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+/* Brand Font */
+/* font-family: "Water Brush", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
+
+.navbar a {
+    padding: 16px;
+}
+
+.navbar .navbar-brand,
+.footer-brand {
+    font-family: "Water Brush", cursive;
+    letter-spacing: 4px;
+}
+
+.navbar ul li,
+h1 {
+    font-family: serif;
+}
+
 .card .card-body {
     height: 100px;
     padding-bottom: 0;

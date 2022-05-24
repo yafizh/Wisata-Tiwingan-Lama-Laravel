@@ -4,8 +4,8 @@
     @include('partials.loader')
     <!-- Jumbotron -->
     <section class="jumbotron d-flex align-items-center justify-content-center text-white text-center">
-        <div class="row g-0">
-            <h1 class="display-4 fw-bold">Desa Wisata Tiwingan Lama</h1>
+        <div class="row g-0 px-5">
+            <h1 class="display-4 fw-bold mb-3">Desa Wisata Tiwingan Lama</h1>
             <p class="lead fw-light">
                 @foreach ($destinations as $destination)
                     <span class="destination">{{ $destination->name }}</span>

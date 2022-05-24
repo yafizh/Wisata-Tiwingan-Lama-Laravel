@@ -37,7 +37,7 @@
                                                 @elseif ($video->created_at->isYesterday())
                                                     {{ 'Kemarin' }}
                                                 @else
-                                                    {{ $video->created_at->locale('ID')->getTranslatedMonthName() . ' ' . $imageGallery->created_at->year }}
+                                                    {{ $video->created_at->locale('ID')->getTranslatedMonthName() . ' ' . $video->created_at->year }}
                                                 @endif
                                             </small>
                                         </div>

@@ -4,7 +4,7 @@ document.addEventListener("scroll", function () {
     const jumbotron = document.querySelector(".jumbotron");
     if (
         document.querySelector("html").scrollTop >
-        jumbotron.offsetHeight - 700
+        jumbotron.offsetHeight / 4
     ) {
         navbar.classList.add("scrolled");
         navbar.classList.add("navbar-light");
