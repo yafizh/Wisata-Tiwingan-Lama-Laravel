@@ -14,8 +14,23 @@
     font-family: serif;
 }
 
+.navbar li a::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.navbar li a.marker::after {
+    transform: scaleX(1);
+}
+
 .navbar a {
     padding: 16px;
+    width: fit-content;
 }
 
 .navbar .navbar-brand,
@@ -104,7 +119,6 @@
 footer {
     padding: 6rem;
 }
-
 
 #join-us div a {
     color: #212121;

@@ -1,18 +1,43 @@
+const navbar = document.querySelector(".fixed-top");
+const jumbotron = document.querySelector(".jumbotron");
+
+const tourPackage = document.querySelector("#tour-package");
+const destination = document.querySelector("#destination");
+const village = document.querySelector("#village");
+const aboutUs = document.querySelector("#about-us");
+
+const navbarList = document.querySelector("#navbarNav ul");
+const navbarNavLink = navbarList.querySelectorAll("li a");
 // Navbar When Scrolling
 document.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".fixed-top");
-    const jumbotron = document.querySelector(".jumbotron");
-    if (
-        document.querySelector("html").scrollTop >
-        jumbotron.offsetHeight / 4
-    ) {
+    // aboyt us <= 230 because it is bottow of the page, no space anymore, so i set the exactly number
+    if (aboutUs.getBoundingClientRect().y <= 230) {
+        navbarNavLink.forEach((a) => a.classList.remove("marker"));
+        navbarList.querySelector("li:nth-child(5) a").classList.add("marker");
+    } else if (tourPackage.getBoundingClientRect().y <= 1) {
+        navbarNavLink.forEach((a) => a.classList.remove("marker"));
+        navbarList.querySelector("li:nth-child(4) a").classList.add("marker");
+    } else if (village.getBoundingClientRect().y <= 1) {
+        navbarNavLink.forEach((a) => a.classList.remove("marker"));
+        navbarList.querySelector("li:nth-child(3) a").classList.add("marker");
+    } else if (destination.getBoundingClientRect().y <= 1) {
+        navbarNavLink.forEach((a) => a.classList.remove("marker"));
+        navbarList.querySelector("li:nth-child(2) a").classList.add("marker");
+    } else {
+        navbarNavLink.forEach((a) => a.classList.remove("marker"));
+        navbarList.querySelector("li:nth-child(1) a").classList.add("marker");
+    }
+
+    if (document.querySelector("html").scrollTop > jumbotron.offsetHeight / 4) {
         navbar.classList.add("scrolled");
         navbar.classList.add("navbar-light");
         navbar.classList.remove("navbar-dark");
+        navbarList.style.borderBottomColor = "#000";
     } else {
         navbar.classList.remove("scrolled");
         navbar.classList.remove("navbar-light");
         navbar.classList.add("navbar-dark");
+        navbarList.style.borderBottomColor = "#191919";
     }
 });
 
