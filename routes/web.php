@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardChangePasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDestinationController;
 use App\Http\Controllers\DashboardImageGalleryController;
@@ -55,6 +56,10 @@ Route::resource('/admin/tour-packages', DashboardTourPackageController::class)->
     'tour-packages' => 'tour-package:slug'
 ])->middleware('auth');
 
+Route::get('/admin/change-password', [DashboardChangePasswordController::class, 'index']);
+Route::post('/admin/change-password', [DashboardChangePasswordController::class, 'change_password']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
+

@@ -45,7 +45,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('') ? 'active' : '' }}" href="/admin/gallery/images">
+                <a class="nav-link {{ Request::is('admin/change-password') ? 'active' : '' }}" href="/admin/change-password">
                     <span data-feather="shield"></span>
                     Ganti Password
                 </a>
