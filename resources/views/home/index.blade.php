@@ -120,7 +120,7 @@
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="row g-0 justify-content-center align-items-center">
                         <div class="row text-center" style="height: 3rem;">
-                            <h1 id="footer-brand" class="footer-brand">Dewi Tilam</h1>
+                            <h1 id="footer-brand">Dewi Tilam</h1>
                         </div>
                         <div id="join-us" class="row justify-content-center p-4">
                             <div id="instagram" class="col-auto">

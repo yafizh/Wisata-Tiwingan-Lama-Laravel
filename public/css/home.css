@@ -34,7 +34,7 @@
 }
 
 .navbar .navbar-brand,
-.footer-brand {
+#footer-brand {
     font-family: "Water Brush", cursive;
     letter-spacing: 4px;
 }
@@ -80,6 +80,7 @@ html {
 #tour-package h2,
 #village h2,
 #about-us h2 {
+    font-size: 2em;
     padding-bottom: 2rem;
     font-family: serif;
 }
@@ -122,6 +123,10 @@ html {
 
 footer {
     padding: 6rem;
+}
+
+#footer-brand {
+    font-size: 2.5em;
 }
 
 #join-us div a {
