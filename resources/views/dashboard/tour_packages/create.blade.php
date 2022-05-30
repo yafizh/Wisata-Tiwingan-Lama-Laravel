@@ -19,7 +19,7 @@
             <div class="mb-3 col-lg-6">
                 <label for="name" class="form-label">Nama Paket Wisata</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                    value="{{ old('name') }}" required>
+                    value="{{ old('name') }}" required autocomplete="off">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}

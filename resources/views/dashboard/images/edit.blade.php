@@ -34,7 +34,7 @@
             <div class="mb-3 col-lg-6">
                 <label for="title" class="form-label">Judul</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                    value="{{ old('title', $imageGallery->title) }}" required>
+                    value="{{ old('title', $imageGallery->title) }}" required autocomplete="off">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}

@@ -7,7 +7,7 @@
     <form action="/{{ Route::getCurrentRoute()->uri() }}" method="get" class="w-100">
         <input class="form-control form-control-dark" name="search"
             value="{{ request('search') }}" type="text" placeholder="Search"
-            aria-label="Search">
+            aria-label="Search" autocomplete="off">
     </form>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">

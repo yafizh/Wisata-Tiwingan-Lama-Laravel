@@ -20,7 +20,7 @@
                 <label class="form-label">Link YouTube</label>
                 <input type="text" placeholder="Link Youtube" class="form-control @error('video') is-invalid @enderror"
                     name="video" id="video"
-                    value="{{ old('video', 'https://www.youtube.com/watch?v=' . $videoGallery->video) }}" required>
+                    value="{{ old('video', 'https://www.youtube.com/watch?v=' . $videoGallery->video) }}" required autocomplete="off">
                 @error('video')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -30,7 +30,7 @@
             <div class="mb-3 col-lg-6">
                 <label for="title" class="form-label">Judul</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                    value="{{ old('title', $videoGallery->title) }}" required>
+                    value="{{ old('title', $videoGallery->title) }}" required autocomplete="off">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
