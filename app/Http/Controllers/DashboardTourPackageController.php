@@ -70,7 +70,7 @@ class DashboardTourPackageController extends Controller
             TourPackageImage::create(['tour_package_id' => $id, 'image' => $image]);
 
 
-        return redirect('/admin/tour-packages')->with('success', 'Paket Wisata berhasil ditambahkan');
+        return redirect('/admin/tour-packages')->with('success', ['message' => 'Paket Wisata berhasil ditambahkan!', 'slug' => $slug]);
     }
 
     /**
@@ -153,7 +153,7 @@ class DashboardTourPackageController extends Controller
             TourPackageImage::create(['tour_package_id' => $tourPackage->id, 'image' => $image]);
 
 
-        return redirect('/admin/tour-packages')->with('success', 'Paket WIsata berhasil diubah');
+        return redirect('/admin/tour-packages')->with('success', ['message' => 'Paket Wisata berhasil diubah!', 'slug' => $slug]);
     }
 
     /**
@@ -168,6 +168,6 @@ class DashboardTourPackageController extends Controller
             Storage::delete($image->image);
 
         TourPackage::destroy($tourPackage->id);
-        return redirect('/admin/tour-packages')->with('success', 'Paket Wisata berhasil dihapus!');
+        return redirect('/admin/tour-packages')->with('success', ['message' => 'Paket Wisata berhasil dihapus!']);
     }
 }

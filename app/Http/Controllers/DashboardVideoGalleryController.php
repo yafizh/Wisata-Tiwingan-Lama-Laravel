@@ -62,7 +62,7 @@ class DashboardVideoGalleryController extends Controller
         $properDataVideoGallery = array_merge($validator->validated(), $validatedForm);
         VideoGallery::create($properDataVideoGallery);
 
-        return redirect('/admin/gallery/videos')->with('success', 'Data berhasil ditambahkan');
+        return redirect('/admin/gallery/videos')->with('success', ['message' => 'Galeri Video berhasil ditambahkan!', 'slug' => $slug]);
     }
 
     /**
@@ -125,7 +125,7 @@ class DashboardVideoGalleryController extends Controller
         VideoGallery::where('id', $videoGallery->id)
         ->update($properDataVideoGallery);
 
-        return redirect('/admin/gallery/videos')->with('success', 'Data berhasil ditambahkan');
+        return redirect('/admin/gallery/videos')->with('success', ['message' => 'Galeri Video berhasil diubah!', 'slug' => $slug]);
     }
 
     /**
@@ -137,7 +137,7 @@ class DashboardVideoGalleryController extends Controller
     public function destroy(VideoGallery $videoGallery)
     {
         VideoGallery::destroy($videoGallery->id);
-        return redirect('/admin/gallery/videos')->with('success', 'Video berhasil dihapus!');
+        return redirect('/admin/gallery/videos')->with('success', ['message' => 'Galeri Video berhasil dihapus!']);
     }
 
     public function youtube_parser($url)

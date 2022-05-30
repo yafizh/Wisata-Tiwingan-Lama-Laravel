@@ -70,7 +70,7 @@ class DashboardDestinationController extends Controller
             DestinationImage::create(['destination_id' => $id, 'image' => $image]);
 
 
-        return redirect('/admin/destinations')->with('success', 'Wisata berhasil ditambahkan');
+        return redirect('/admin/destinations')->with('success', ['message' => 'Wisata berhasil ditambahkan!', 'slug' => $slug]);
     }
 
     /**
@@ -153,7 +153,7 @@ class DashboardDestinationController extends Controller
             DestinationImage::create(['destination_id' => $destination->id, 'image' => $image]);
 
 
-        return redirect('/admin/destinations')->with('success', 'Wisata berhasil diubah');
+        return redirect('/admin/destinations')->with('success', ['message' => 'Wisata berhasil diubah!', 'slug' => $slug]);
     }
 
     /**
@@ -168,6 +168,6 @@ class DashboardDestinationController extends Controller
             Storage::delete($image->image);
 
         Destination::destroy($destination->id);
-        return redirect('/admin/destinations')->with('success', 'Wisata berhasil dihapus!');
+        return redirect('/admin/destinations')->with('success', ['message' => 'Wisata berhasil dihapus!']);
     }
 }

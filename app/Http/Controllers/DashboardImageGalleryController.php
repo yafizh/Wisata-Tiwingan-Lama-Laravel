@@ -19,7 +19,7 @@ class DashboardImageGalleryController extends Controller
     public function index()
     {
         return view('dashboard.images.index', [
-            "images" => ImageGallery::where('title', 'like', '%'.request('search').'%')->latest()->paginate(10)
+            "images" => ImageGallery::where('title', 'like', '%' . request('search') . '%')->latest()->paginate(10)
         ]);
     }
 
@@ -70,7 +70,7 @@ class DashboardImageGalleryController extends Controller
             Image::create(['image_gallery_id' => $id, 'image' => $image]);
 
 
-        return redirect('/admin/gallery/images')->with('success', 'Data berhasil ditambahkan');
+        return redirect('/admin/gallery/images')->with('success', ['message' => 'Galeri Gambar berhasil ditambahkan!', 'slug' => $slug]);
     }
 
     /**
@@ -159,7 +159,7 @@ class DashboardImageGalleryController extends Controller
             Image::create(['image_gallery_id' => $imageGallery->id, 'image' => $image]);
 
 
-        return redirect('/admin/gallery/images')->with('success', 'Data berhasil ditambahkan');
+        return redirect('/admin/gallery/images')->with('success', ['message' => 'Galeri Gambar berhasil diubah!', 'slug' => $slug]);
     }
 
     /**
@@ -174,6 +174,6 @@ class DashboardImageGalleryController extends Controller
             Storage::delete($image->image);
 
         ImageGallery::destroy($imageGallery->id);
-        return redirect('/admin/gallery/images')->with('success', 'Image berhasil dihapus!');
+        return redirect('/admin/gallery/images')->with('success', ['message' => 'Galeri Gambar berhasil dihapus!']);
     }
 }
