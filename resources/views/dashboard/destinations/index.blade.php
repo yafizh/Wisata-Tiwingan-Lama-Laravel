@@ -18,7 +18,7 @@
                 <div>
                     {{ session('success')['message'] }}
                     @if (isset(session('success')['slug']))
-                        <a href="/admin/destinations/{{ session('success')['slug'] }}" class="alert-link">
+                        <a href="/{{ Route::getCurrentRoute()->uri() }}/{{ session('success')['slug'] }}" class="alert-link">
                             Lihat Wisata
                         </a>
                     @endif
