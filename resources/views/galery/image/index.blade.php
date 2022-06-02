@@ -56,15 +56,13 @@
         const url = '{{ URL::asset('storage') }}';
     </script>
     <script src="/scripts/templates.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="/scripts/modal.js"></script>
     <script>
         const image_gallery_container = document.querySelector('#image-galleries');
         $(window).scroll(function() {
             if (
                 Math.round($(window).scrollTop()) >
-                $(document).height() - $(window).height() - 200 &&
+                ($(document).height() - $(window).height()) / 2 &&
                 image_gallery_container.children.length !=
                 parseInt('{{ $count }}')
             ) {

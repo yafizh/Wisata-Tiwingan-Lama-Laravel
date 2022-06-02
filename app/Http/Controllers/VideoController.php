@@ -31,14 +31,12 @@ class VideoController extends Controller
                 'video' => $value->video,
             ];
 
-            if($value->created_at->isToday()){
+            if ($value->created_at->isToday())
                 $response[$i]['created_at'] = 'Hari ini';
-            } else if ($value->created_at->isYesterday()) {
+            else if ($value->created_at->isYesterday())
                 $response[$i]['created_at'] = 'Kemarin';
-            } else {
+            else
                 $response[$i]['created_at'] = $value->created_at->locale('ID')->getTranslatedMonthName() . ' ' . $value->created_at->year;
-            }
-
         }
         return response()->json(['videoGallery' => $response]);
     }

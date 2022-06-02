@@ -80,6 +80,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         VideoGallery::create([
+            'title' => 'nyari artefak buat ayang ayaka',
+            'slug' => 'nyari-artefak-buat-ayang-ayaka',
+            'body' => '<p>Support the stream: <a href="https://streamlabs.com/ayogch">https://streamlabs.com/ayogch<a/> nyari artefak buat ayaka genshin lagi</p>',
+            'video' => 'yFVUnI2cI9I'
+        ]);
+
+        VideoGallery::create([
             'title' => 'belajar tehnik motong jalan | stumble guys indonesa',
             'slug' => 'belajar-tehnik-motong-jalan-|-stumble-guys-indonesa',
             'body' => '<p>belajar tehnik motong jalan | stumble guys indonesa</p><p>Support the stream: https://streamlabs.com/ayogch</p><p>lanjut push mmr masha semoga ga turun | mobile legends bang bang indonesia</p><p>Support channel ini bisa lewat link saweria berikut : https://saweria.co/XbrogGame</p><p>My PC Spec :</p><ul><li>Mic Headphone</li><li>Core i3 10105F</li><li>16 GB</li><li>V GEN NVMe - 256G</li><li>GEFORCE GTX 1650 4GB DDR6</li><li>Webcam - hp</li></ul>',
@@ -91,6 +98,41 @@ class DatabaseSeeder extends Seeder
             'slug' => 'yoga-mobile-legend',
             'body' => '<p>Support the stream: https://streamlabs.com/ayogch</p><p>lanjut push mmr masha semoga ga turun | mobile legends bang bang indonesia</p><p>Support channel ini bisa lewat link saweria berikut : https://saweria.co/XbrogGame</p><p>My PC Spec :</p><ul><li>Mic Headphone</li><li>Core i3 10105F</li><li>16 GB</li><li>V GEN NVMe - 256G</li><li>GEFORCE GTX 1650 4GB DDR6</li><li>Webcam - hp</li></ul>',
             'video' => 'l7pk6_jFx_Y'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'ez dek 3 kali menang berturut turut',
+            'slug' => 'ez-dek-3-kali-menang-berturut-turut',
+            'body' => '<p>udah jadi proplayer harusnya | stumble guys indonesia</p>',
+            'video' => 'ybjQPpJD45A'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'lag tetep di upload hh',
+            'slug' => 'lag-tetep-di-upload-hh',
+            'body' => '<p>membuat hutan di gurun pasir | minecraft indonesia</p>',
+            'video' => 'wMZeAdOcYjE'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'lagu turu undertale resmi tamat',
+            'slug' => 'lagu-turu-undertale-resmi-tamat',
+            'body' => '<p>undertale lagu turu resmi tamat</p>',
+            'video' => 'qYJK-1dFNSM'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'rumah baru ada penyusup',
+            'slug' => 'rumah-baru-ada-penyusup',
+            'body' => '<p>ngelanjutin nguli di server | minecraft indonesia</p>',
+            'video' => '05JeXkG9XFw'
+        ]);
+
+        VideoGallery::create([
+            'title' => 'ml & point blank indonessia',
+            'slug' => 'ml-&-point-blank-indonessia',
+            'body' => '<p>point blank indonessia</p>',
+            'video' => 'X5qLbBxESeI'
         ]);
 
         // Destinations
