@@ -17,8 +17,7 @@
 .navbar li a::after {
     content: "";
     display: block;
-    border-radius: 50%;
-    border-bottom-width: 3px;
+    border-bottom-width: 2px;
     border-bottom-style: solid;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
