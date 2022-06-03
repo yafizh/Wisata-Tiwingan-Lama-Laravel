@@ -1,0 +1,159 @@
+/* Alternative Jumbotron Font */
+/* font-family: 'Cormorant Garamond', serif; */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Jumbotron Font */
+/* font-family: "Kaushan Script", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+/* Brand Font */
+/* font-family: "Water Brush", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
+
+.dewi-tilam-text {
+    font-family: serif;
+}
+
+.navbar li a::after {
+    content: "";
+    display: block;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.navbar li a.marker::after {
+    transform: scaleX(1);
+}
+
+.navbar a {
+    padding: 16px;
+    width: fit-content;
+}
+
+.navbar .navbar-brand,
+.footer-brand {
+    font-family: "Water Brush", cursive;
+    letter-spacing: 4px;
+}
+
+.navbar ul li {
+    font-family: serif;
+}
+
+.jumbotron {
+    background-image: url("../assets/images/jumbotron.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: "Kaushan Script", cursive;
+}
+
+#village img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item img {
+    height: 255px;
+    object-fit: cover;
+}
+
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+}
+
+html {
+    scrollbar-width: none;
+}
+
+#destination,
+#tour-package,
+#village,
+#about-us {
+    padding: 6rem 0;
+}
+
+#destination h2,
+#tour-package h2,
+#village h2,
+#about-us h2 {
+    font-size: 2em;
+    padding-bottom: 2rem;
+    font-family: serif;
+}
+
+#destination .card,
+#village .card,
+#tour-package .card {
+    width: 18rem;
+}
+
+#destination .card .card-body,
+#village .card .card-body,
+#tour-package .card .card-body {
+    height: 200px;
+    overflow: hidden;
+}
+
+#destination .card .card-img,
+#village .card .card-img,
+#tour-package .card .card-img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.card .card-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+.fixed-top {
+    background: rgba(0, 0, 0, 0);
+}
+
+.fixed-top.scrolled {
+    background-color: #fff !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: background-color 200ms linear;
+}
+
+footer {
+    padding: 6rem;
+}
+
+.footer-brand {
+    font-size: 2.5em;
+}
+
+#join-us div a {
+    color: #212121;
+}
+
+#join-us div a:hover {
+    color: #0d6efd;
+}
+
+#email:hover {
+    color: #0d6efd;
+    cursor: pointer;
+}
+
+.join-us-font-size {
+    font-size: 24px;
+}
+
+@media only screen and (min-width: 550px) {
+    .jumbotron .destination:not(:last-child):after {
+        display: inline;
+        content: " - ";
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .jumbotron .destination {
+        display: block;
+    }
+}
