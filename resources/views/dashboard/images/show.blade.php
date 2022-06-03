@@ -30,13 +30,13 @@
                         @endif
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active" style="height: 400px;">
-                            <img src="{{ asset('storage/' . $imageGallery->images[0]->image) }}" class="d-block w-100" style="height: 100%; object-fit: cover;">
+                        <div class="carousel-item active">
+                            <img src="{{ asset('storage/' . $imageGallery->images[0]->image) }}" class="d-block w-100">
                         </div>
                         @if ($imageGallery->images->count() > 1)
                             @foreach ($imageGallery->images->skip(1) as $image)
-                                <div class="carousel-item" style="height: 400px;">
-                                    <img src="{{ asset('storage/' . $image->image) }}" class="d-block w-100" style="height: 100%; object-fit: cover;">
+                                <div class="carousel-item">
+                                    <img src="{{ asset('storage/' . $image->image) }}" class="d-block w-100">
                                 </div>
                             @endforeach
                         @endif
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-3 col-lg-6">
+        <div class="row g-0 mb-3 col-lg-6 body">
             {!! $imageGallery->body !!}
         </div>
     </main>

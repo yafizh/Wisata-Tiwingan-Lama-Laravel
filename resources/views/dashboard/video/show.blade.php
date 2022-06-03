@@ -21,7 +21,7 @@
                     allowfullscreen></iframe>
             </div>
         </div>
-        <div class="row mb-3 col-lg-6">
+        <div class="row g-0 mb-3 col-lg-6 body">
             {!! $videoGallery->body !!}
         </div>
     </main>
