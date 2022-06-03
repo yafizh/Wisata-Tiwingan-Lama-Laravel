@@ -133,7 +133,7 @@
                                 </a>
                             </div>
                             <div id="whatsapp" class="col-auto">
-                                <a href="https://api.whatsapp.com/send?phone=0895348676676" target="_blank">
+                                <a href="https://wa.me/62895348676674" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                                         class="bi bi-whatsapp" viewBox="0 0 16 16">
                                         <path
@@ -168,7 +168,7 @@
                             <img src="/assets/images/logo-kab-banjar.png" style="width: 100%;">
                         </div>
                         <div class="col-sm-12 col-md-6 justify-content-center">
-                            <h2 class="ps-4">Pemerintah Kabupaten Banjar</h2>
+                            <h2>Pemerintah Kabupaten Banjar</h2>
                         </div>
                     </div>
                 </div>
